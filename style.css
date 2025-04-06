@@ -16,11 +16,16 @@ h1 {
   line-height: 1.5em;
   margin-bottom: 0.25em;
   font-weight: 600;
+  color: #1a1a1a;
 }
 
 h2 {
   font-size: 1.8em;
   font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1em;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
 }
 
 a:link,
@@ -40,6 +45,7 @@ section {
 }
 
 p {
+  font-size: 1.2em;
   line-height: 1.5em;
   margin-left: auto;
   margin-right: auto;
@@ -202,7 +208,7 @@ p {
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 0.5em 1em;
-  font-size: 0.95em;
+  font-size: 1em;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -238,3 +244,56 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
+
+#work-experience h2 {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.experience-entry {
+  margin-bottom: 1.5em;
+  padding: 6px 1.5em;
+  background-color: #f7f7f7;
+  border-left: 4px solid #007acc;
+  border-radius: 0.4em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.experience-entry:hover {
+  background-color: #f0f8ff;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.experience-header h3 {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+
+.experience-header span {
+  font-weight: normal;
+  color: #666;
+}
+
+.experience-date {
+  font-size: 1em;
+  color: #666;
+}
+
+.experience-description {
+  margin-top: 0.4em;
+  line-height: 1.5em;
+  font-size: 1.1em;
+  font-weight: 350;
+  color: #222;
+}
+
+
