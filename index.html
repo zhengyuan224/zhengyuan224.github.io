@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Zheng Yuan</title>
+
+    <!-- Usual metadata. -->
+    <meta charset="UTF-8" />
+    <link href="./assets/astro.jpg" rel="shortcut icon" type="image/x-icon" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+
+    <!-- Webfont. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles. -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <div style="height: 4em"></div>
+    <section
+      style="
+        display: flex;
+        align-items: start;
+        gap: 2em 1.5em;
+        flex-wrap: wrap-reverse;
+      "
+    >
+      <div style="flex-grow: 1; flex-basis: 20em">
+        <h1>Zheng Yuan</h1>
+        <p>
+          I am a first-year Master's student in Computer Science-AI depth at <a href="https://www.ucsd.edu/">UC San Diego</a>. I received my B.E. degree in Artificial Intelligent from <a href="https://www.shu.edu.cn/">Shanghai University</a> in 2024.
+        </p>
+        <p>
+          I have experience in fine tuning LLMs to answer logical reasoning question.
+        </p>
+        <p>
+          <span style="position: relative; display: inline-block;">
+            <a href="#" onclick="copyEmail(event)" id="copy-email-link" style="text-decoration: none; cursor: pointer; color: #007acc;">
+              Email
+            </a>
+            <span id="copy-status" class="copied-tooltip">Copied!</span>
+          </span>
+          &nbsp;/&nbsp;
+          <a href="https://twitter.com/ChungMinKim">Twitter</a>
+          &nbsp;/&nbsp;
+          <a href="https://github.com/zhengyuan224">Github</a>
+          &nbsp;/&nbsp;
+          <a href="https://docs.google.com/document/d/12cRPLdpT7ES6IHeIp3JFJsJS0lUze8yHy-9sTsCD8AU">Resume</a>
+        </p>
+      </div>
+      <div style="display: block">
+        <img
+          src="./assets/YUAN ZHENG.jpg"
+          alt="A photo of the author"
+          style="
+            width: 12em;
+            height: auto;
+            border-radius: 5%;
+          "
+        />
+      </div>
+    </section>
+    <section>
+      <h2>Project</h2>
+      <div id="category-filter">
+        <button onclick="filterCategory('ALL')">All</button>
+        <button onclick="filterCategory('LLM')">LLM</button>
+        <button onclick="filterCategory('DL')">DL</button>
+        <button onclick="filterCategory('RL')">RL</button>
+        <button onclick="filterCategory('ML')">ML</button>
+      </div>
+      <!-- Paper list will be dynamically generated here -->
+      <ul id="paper-list" style="margin-top: 1em" data-show-recent="false"></ul>
+      <!-- [ <a href="#" onclick="toggleRecentPapers(event)">Show older papers</a> ] -->
+
+
+      
+      <!-- Generate paper list. -->
+      <script>
+
+        const papers = [
+          {
+            previewSrc: "./assets/2048.mp4",
+            title:
+              "Robot See Robot Do: Imitating Articulated Object Manipulation with Monocular 4D Reconstruction",
+            authors: [
+              "Justin Kerr*",
+              "Chung Min Kim*",
+              "Mingxuan Wu",
+              "Brent Yi",
+              "Qianqian Wang",
+              "Ken Goldberg",
+              "Angjoo Kanazawa",
+            ],
+            conference: "CoRL 2024",
+            links: [
+              { text: "Website", url: "https://robot-see-robot-do.github.io/" },
+              { text: "Paper", url: "https://arxiv.org/abs/2409.18121" },
+            ],
+            summary:
+              "Feature fields can help reconstruct, track, and retarget object motion.",
+            highlighted: true,
+            recent: true,
+            new: true,
+            category: "LLM",
+          },
+          {
+            previewSrc: "./assets/dl.mp4",
+            title: "GARField: Group Anything with Radiance Fields",
+            authors: [
+              "Chung Min Kim*",
+              "Mingxuan Wu*",
+              "Justin Kerr*",
+              "Ken Goldberg",
+              "Matthew Tancik",
+              "Angjoo Kanazawa",
+            ],
+            conference: "CVPR 2024",
+            links: [
+              { text: "Website", url: "https://www.garfield.studio" },
+              { text: "Paper", url: "https://arxiv.org/abs/2401.09419" },
+            ],
+            summary:
+              "Hierarchical grouping in 3D by training a scale-conditioned affinity field from multi-level masks.",
+            recent: true,
+            new: false,
+            category: "DL",
+          },
+        ];
+        function copyEmail(event) {
+          event.preventDefault();
+
+          const email = "zhy056@ucsd.edu";
+          const status = document.getElementById("copy-status");
+
+          navigator.clipboard.writeText(email).then(() => {
+            status.classList.add("show");
+            setTimeout(() => {
+              status.classList.remove("show");
+            }, 1500);
+          }).catch(err => {
+            alert("Failed to copy.");
+          });
+        }
+        function generatePaperList() {
+          const paperList = document.getElementById("paper-list");
+          paperList.innerHTML = ""; 
+          papers.forEach((paper) => {
+            const li = document.createElement("li");
+            li.classList.add(`category-${paper.category.toLowerCase()}`);
+            if (paper.highlighted) {
+              li.classList.add("paper-highlighted");
+            }
+            // if (paper.recent) {
+            //   li.classList.add("paper-recent");
+            // }
+            li.classList.add("paper");
+            li.innerHTML = `
+              ${
+                paper.previewSrc.endsWith(".mp4")
+                  ? `<video class="paper-visual" src="${paper.previewSrc}" loop muted autoplay playsinline onclick="openVideoModal('${paper.previewSrc}')"></video>`
+                  : `<img class="paper-visual" src="${paper.previewSrc}" alt="${paper.title}">`
+              }
+              <div class="paper-textual">
+                <h3>
+                  ${paper.title}
+                  ${paper.new ? '<img src="./assets/new_animated.gif" alt="Blinking icon that says \'new\'." />' : ""}
+                </h3>
+                <div style="height: 0.1em"></div>
+                ${paper.authors
+                  .map((author) => {
+                    const names = author.split(" ");
+                    const firstName = names.slice(0, -1).join("&nbsp;");
+                    const lastName = names[names.length - 1];
+                    const formattedName = `${firstName}&nbsp;${lastName}`;
+                    return author.startsWith("Zheng Yuan")
+                      ? `<strong>${formattedName}</strong>`
+                      : formattedName;
+                  })
+                  .join(", ")}.
+                <span style="font-weight: 450">${paper.conference}.</span>
+                <div style="height: 0.375em"></div>
+                ${paper.links
+                  .map((link) => `<a href="${link.url}">${link.text}</a>`)
+                  .join(" / ")}
+                <div style="height: 0.375em"></div>
+                <em style="opacity: 0.625">${paper.summary}</em>
+              </div>
+            `;
+            paperList.appendChild(li);
+          });
+        }
+
+
+        // function toggleRecentPapers(event) {
+        //   event.preventDefault();
+        //   const paperList = document.getElementById("paper-list");
+        //   const showRecent = paperList.dataset.showRecent === "true";
+        //   paperList.dataset.showRecent = (!showRecent).toString();
+        //   event.target.textContent = showRecent
+        //     ? "Show older papers"
+        //     : "Hide older papers";
+        // }
+        function openVideoModal(src) {
+          const modal = document.getElementById("video-modal");
+          const player = document.getElementById("video-modal-player");
+          player.src = src;
+          modal.style.display = "flex";
+          player.muted = false;
+          player.play().catch(e => console.warn("Play error:", e));
+        }
+
+        function closeVideoModal() {
+          const modal = document.getElementById("video-modal");
+          const player = document.getElementById("video-modal-player");
+          player.pause();
+          player.src = ""; 
+          modal.style.display = "none";
+        }
+        function filterCategory(category) {
+          const allItems = document.querySelectorAll("#paper-list li");
+          allItems.forEach(item => {
+            if (category === "ALL") {
+              item.style.display = "flex";
+            } else {
+              const match = item.classList.contains(`category-${category.toLowerCase()}`);
+              item.style.display = match ? "flex" : "none";
+            }
+          });
+          const buttons = document.querySelectorAll("#category-filter button");
+          buttons.forEach(btn => btn.classList.remove("active"));
+          document.querySelector(`#category-filter button[onclick*="${category}"]`).classList.add("active");
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+          generatePaperList();
+          filterCategory("ALL");
+        });
+      </script>
+    </section>
+    <section>
+      <h2>Misc</h2>
+      <p> I like sunsets. Every year from Berkeley, in early November, the sun sets over the golden gate:</p>
+      <div style="display: block">
+        <img
+          src="./assets/sunset_small.jpeg"
+          alt="A photo of a sunset over the golden gate, taken by the author"
+          style="
+            width: 13em;
+            height: auto;
+            aspect-ratio: 1.5;
+            object-fit: cover;
+            border-radius: 5%;
+          "
+        />
+      </div>
+    </section>
+    <div style="height: 1em"></div>
+    <section>
+      <em style="color: #777">
+        Website design borrows from
+        <a href="https://jonbarron.info/">Jon Barron</a> and
+        <a href="https://brentyi.github.io/">Brent Yi</a>.
+      </em>
+    </section>
+    <div style="height: 2em"></div>
+    <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
+      <div class="video-modal-content" onclick="event.stopPropagation()">
+        <video id="video-modal-player" controls autoplay></video>
+      </div>
+    </div>
+  </body>
+</html>
