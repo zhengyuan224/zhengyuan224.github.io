@@ -288,7 +288,7 @@ p {
   color: #666;
 }
 
-.experience-description1 {
+.experience-description-1 {
   margin-top: 0.4em !important;
   margin-bottom: 0 !important;
   line-height: 1.5em;
@@ -297,7 +297,7 @@ p {
   color: #222;
 }
 
-.experience-description2 {
+.experience-description-2 {
   margin-bottom: 6px !important;
   margin-top: 6px !important;
   line-height: 1.5em;
@@ -306,7 +306,7 @@ p {
   color: #222;
 }
 
-.experience-description3 {
+.experience-description-3 {
   margin-top: 0 !important;
   line-height: 1.5em;
   font-size: 1.1em;
