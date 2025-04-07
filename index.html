@@ -52,12 +52,12 @@
             </a>
             <span id="copy-status" class="copied-tooltip">Copied!</span>
           </span>
-          &nbsp;/&nbsp;
-          <a href="https://twitter.com/ChungMinKim">Twitter</a>
+          <!-- &nbsp;/&nbsp;
+          <a href="https://twitter.com/ChungMinKim">Twitter</a> -->
           &nbsp;/&nbsp;
           <a href="https://github.com/zhengyuan224">Github</a>
           &nbsp;/&nbsp;
-          <a href="https://docs.google.com/document/d/12cRPLdpT7ES6IHeIp3JFJsJS0lUze8yHy-9sTsCD8AU">Resume</a>
+          <a href="https://drive.google.com/file/d/1hsrQgLM6el3NnsuMqIHEBnv_9qzIzzYP/view?usp=sharing">Resume</a>
         </p>
       </div>
       <div style="display: block">
@@ -78,17 +78,25 @@
     
       <div class="experience-entry">
         <div class="experience-header">
-          <h3>Machine Learning Intern <span>@ ABC Tech</span></h3>
-          <p class="experience-date">June 2024 – August 2024</p>
+          <h3>Machine Learning Intern <span>@ Longcheer Tech</span></h3>
+          <p class="experience-date">August 2024 – September 2024</p>
         </div>
-        <p class="experience-description">
-          Fine-tuned LLMs with LoRA and deployed inference APIs. Designed a prompt-routing mechanism to improve model selection accuracy.
+        <p class="experience-description-1">
+          Automated functional testing for intelligent devices (mainly Xiaomi smartphones and tablets) using LLMs.
         </p>
-      </div>
+        <p class="experience-description-2">
+          Applied GPT-4o through prompt-based batch inference to perform large-scale entity recognition (1,022 commands) and intent extraction (500 failed cases) for functional test.
+        </p>
+        <p class="experience-description-3">
+          Developed a backend service for accessing OpenAI’s LLMs through Azure, supporting diverse internal applications.
+        </p>
+        </div>
+
     
     </section>
-  
+    
     <section>
+      <p>⚙️ Under construction ⚙️</p>
       <h2>Projects</h2>
       <div id="category-filter">
         <button onclick="filterCategory('ALL')">All</button>
@@ -100,9 +108,6 @@
       <!-- Paper list will be dynamically generated here -->
       <ul id="paper-list" style="margin-top: 1em" data-show-recent="false"></ul>
       <!-- [ <a href="#" onclick="toggleRecentPapers(event)">Show older papers</a> ] -->
-
-
-      
       <!-- Generate paper list. -->
       <script>
 
@@ -110,46 +115,35 @@
           {
             previewSrc: "./assets/2048.mp4",
             title:
-              "Robot See Robot Do: Imitating Articulated Object Manipulation with Monocular 4D Reconstruction",
+              "AI 2048",
             authors: [
-              "Justin Kerr*",
-              "Chung Min Kim*",
-              "Mingxuan Wu",
-              "Brent Yi",
-              "Qianqian Wang",
-              "Ken Goldberg",
-              "Angjoo Kanazawa",
+              "Zheng Yuan",
             ],
-            conference: "CoRL 2024",
+            conference: "",
             links: [
-              { text: "Website", url: "https://robot-see-robot-do.github.io/" },
-              { text: "Paper", url: "https://arxiv.org/abs/2409.18121" },
+              // { text: "Website", url: "https://robot-see-robot-do.github.io/" },
+              // { text: "Paper", url: "https://arxiv.org/abs/2409.18121" },
             ],
             summary:
-              "Feature fields can help reconstruct, track, and retarget object motion.",
+              "",
             highlighted: true,
             recent: true,
             new: true,
-            category: "LLM",
+            category: "RL",
           },
           {
             previewSrc: "./assets/dl.mp4",
-            title: "GARField: Group Anything with Radiance Fields",
+            title: "Deep Learning Models Training Platform for Multi-Domain Applications",
             authors: [
-              "Chung Min Kim*",
-              "Mingxuan Wu*",
-              "Justin Kerr*",
-              "Ken Goldberg",
-              "Matthew Tancik",
-              "Angjoo Kanazawa",
+              "Zheng Yuan",
             ],
-            conference: "CVPR 2024",
+            conference: "",
             links: [
-              { text: "Website", url: "https://www.garfield.studio" },
-              { text: "Paper", url: "https://arxiv.org/abs/2401.09419" },
+              // { text: "Website", url: "https://www.garfield.studio" },
+              // { text: "Paper", url: "https://arxiv.org/abs/2401.09419" },
             ],
             summary:
-              "Hierarchical grouping in 3D by training a scale-conditioned affinity field from multi-level masks.",
+              "",
             recent: true,
             new: false,
             category: "DL",
@@ -263,11 +257,11 @@
         });
       </script>
     </section>
-    <section>
+    <!-- <section>
       <h2>Misc</h2>
       <p> I like sunsets. Every year from Berkeley, in early November, the sun sets over the golden gate:</p>
 
-      <!-- <div style="display: block">
+      <div style="display: block">
         <img
           src="./assets/sunset_small.jpeg"
           alt="A photo of a sunset over the golden gate, taken by the author"
@@ -279,14 +273,16 @@
             border-radius: 5%;
           "
         />
-      </div> -->
-    </section>
+      </div>
+    </section> -->
     <div style="height: 1em"></div>
     <section>
       <em style="color: #777">
         Website design borrows from
         <a href="https://jonbarron.info/">Jon Barron</a> and
         <a href="https://brentyi.github.io/">Brent Yi</a>.
+        Forked from
+        <a href="https://github.com/chungmin99/">Chung Min Kim</a>.
       </em>
     </section>
     <div style="height: 2em"></div>

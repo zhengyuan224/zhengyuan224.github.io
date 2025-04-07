@@ -288,8 +288,26 @@ p {
   color: #666;
 }
 
-.experience-description {
-  margin-top: 0.4em;
+.experience-description-1 {
+  margin-top: 0.4em !important;
+  margin-bottom: 0 !important;
+  line-height: 1.5em;
+  font-size: 1.1em;
+  font-weight: 350;
+  color: #222;
+}
+
+.experience-description-2 {
+  margin-bottom: 6px !important;
+  margin-top: 6px !important;
+  line-height: 1.5em;
+  font-size: 1.1em;
+  font-weight: 350;
+  color: #222;
+}
+
+.experience-description-3 {
+  margin-top: 0 !important;
   line-height: 1.5em;
   font-size: 1.1em;
   font-weight: 350;
