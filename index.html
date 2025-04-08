@@ -103,7 +103,7 @@
         <button onclick="filterCategory('LLM')">LLM</button>
         <button onclick="filterCategory('DL')">DL</button>
         <button onclick="filterCategory('RL')">RL</button>
-        <button onclick="filterCategory('ML')">ML</button>
+        <!-- <button onclick="filterCategory('ML')">ML</button> -->
       </div>
       <!-- Paper list will be dynamically generated here -->
       <ul id="paper-list" style="margin-top: 1em" data-show-recent="false"></ul>
@@ -112,38 +112,106 @@
       <script>
 
         const papers = [
-          {
+           {
             previewSrc: "./assets/2048.mp4",
             title:
               "AI 2048",
             authors: [
-              "Zheng Yuan",
+              { name: "Zheng Yuan"},
             ],
-            conference: "",
+            conference: "Jan 2025~Mar 2025",
             links: [
-              // { text: "Website", url: "https://robot-see-robot-do.github.io/" },
-              // { text: "Paper", url: "https://arxiv.org/abs/2409.18121" },
+              { text: "Git repo", url: "https://github.com/zhengyuan224/2048AI" },
             ],
             summary:
-              "",
+              "Developed an AI to play 2048 using the Expectimax, achieving high scores through probability and strategic planning.",
             highlighted: true,
             recent: true,
             new: true,
             category: "RL",
           },
           {
-            previewSrc: "./assets/dl.mp4",
-            title: "Deep Learning Models Training Platform for Multi-Domain Applications",
+            previewSrc: "./assets/lstmmvo.png",
+            title:
+              "Quantitative Optimization of Multi-Crypto Investment Portfolios using LSTM & MPT",
             authors: [
-              "Zheng Yuan",
+              { name: "Zheng Yuan"},
             ],
-            conference: "",
+            conference: "Jan 2025~Mar 2025",
             links: [
-              // { text: "Website", url: "https://www.garfield.studio" },
-              // { text: "Paper", url: "https://arxiv.org/abs/2401.09419" },
+              { text: "Git repo", url: "https://github.com/zhengyuan224/Multi-Crypto-Investment-Portfolios" },
+              { text: "Report(English)", url: "https://drive.google.com/file/d/15DpqUIzlJGGnx6x8Zoadb_otJBPP6Ks3/view?usp=sharing" },
             ],
             summary:
-              "",
+            `
+            Collected real-world data from OKX for eight cryptocurrencies and computed daily returns, combining LSTM-based return forecasting with Mean-Variance Optimization (MVO) from Modern Portfolio Theory to optimize multi-crypto investment strategies, which improved average return from -0.0257 to 0.0155 with an acceptable increase in variance.
+            `,
+            highlighted: true,
+            recent: true,
+            new: true,
+            category: "DL",
+          },
+          {
+            previewSrc: "./assets/showdata.png",
+            title: "LoRA Fine-Tuning Qwen2 & Yi with Consistency Fallback for Logical Reasoning ",
+            authors: [
+              { name: "Zheng Yuan", lead: true },
+              { name: "Yiyang Zheng" },
+              { name: "Yunzhe Li" },
+            ],
+            conference: "Jul 2024~Aug 2024",
+            links: [
+              { text: "Git repo", url: "https://github.com/zhengyuan224/finetune" },
+            ],
+            summary:
+            `
+           Fine-tuned Qwen2-72B-Instruct and Yi-1.5-34B models using LoRA on an NVIDIA A800-80GB GPU via the LLaMA-Factory framework. 
+           Implemented a consistency-based fallback strategy that compares outputs from two fine-tuned LLMs and reverts to CoT prompting when inconsistencies arise. 
+           Achieved a final accuracy of 0.8690.
+            `  ,
+            recent: true,
+            new: false,
+            category: "LLM",
+          },
+          {
+            previewSrc: "./assets/dl.mp4",
+            title: "Deep Learning Models Training Platform for Multi-Domain Applications ",
+            authors: [
+              { name: "Zheng Yuan"},
+            ],
+            conference: "Jan 2024~May 2024",
+            links: [
+              { text: "Git repo", url: "https://github.com/zhengyuan224/DLplatform" },
+              { text: "Report(Chinese)", url: "https://drive.google.com/file/d/1JWPmzGX-ETbru1mxsOqkXzZV6yIPrz69/view?usp=sharing" },
+            ],
+            summary:
+            `
+            Developed a full-stack platform with  Django, TensorFlow, jQuery, Bootstrap and MySQL, 
+            supporting training and inference for 17 classic deep learning models (e.g., ResNet, LSTM, Transformer). 
+            Extracted user intents using Jieba, KeyBERT, and FuzzyWuzzy to recommend models, with a UI for customizing parameters and triggering backend training.
+            `  ,
+            recent: true,
+            new: false,
+            category: "DL",
+          },
+          {
+            previewSrc: "./assets/cancer.mp4",
+            title: "Few-Shot Semi-Supervised 3D Medical Segmentation with Diffusion Model",
+            authors: [
+              { name: "Zheng Yuan", lead: true },
+              { name: "Yiyang Zheng" },
+              { name: "Pengxiang Li" },
+            ],
+            conference: "Apr 2023~Jan 2024",
+            links: [
+              { text: "Git repo", url: "https://github.com/zhengyuan224/3D-Medical-Segmentation-with-Diffusion-Model" },
+              { text: "Report(Chinese)", url: "https://drive.google.com/file/d/1CyGRKUUG47uSGNoVx-EN0SZitCEC4gpr/view?usp=sharing" },
+            ],
+            summary:
+            `
+            Applied Medical Diffusion to generate 200 3D CT scans from 24 samples for few-shot learning, improving segmentation performance with limited data. 
+            Used U-Net and DeepAtlas to segment tumors, bladder wall, and background, raising the Dice score from 0.81 to 0.85.
+            `  ,
             recent: true,
             new: false,
             category: "DL",
@@ -181,7 +249,8 @@
               ${
                 paper.previewSrc.endsWith(".mp4")
                   ? `<video class="paper-visual" src="${paper.previewSrc}" loop muted autoplay playsinline onclick="openVideoModal('${paper.previewSrc}')"></video>`
-                  : `<img class="paper-visual" src="${paper.previewSrc}" alt="${paper.title}">`
+                  : `<img class="paper-visual" src="${paper.previewSrc}" alt="${paper.title}" onclick="openImageModal('${paper.previewSrc}')">`
+
               }
               <div class="paper-textual">
                 <h3>
@@ -189,19 +258,23 @@
                   ${paper.new ? '<img src="./assets/new_animated.gif" alt="Blinking icon that says \'new\'." />' : ""}
                 </h3>
                 <div style="height: 0.1em"></div>
-                ${paper.authors
-                  .map((author) => {
-                    const names = author.split(" ");
-                    const firstName = names.slice(0, -1).join("&nbsp;");
-                    const lastName = names[names.length - 1];
-                    const formattedName = `${firstName}&nbsp;${lastName}`;
-                    return author.startsWith("Zheng Yuan")
+              ${paper.authors
+                .map((author) => {
+                  const names = author.name.split(" ");
+                  const firstName = names.slice(0, -1).join("&nbsp;");
+                  const lastName = names[names.length - 1];
+                  const formattedName = `${firstName}&nbsp;${lastName}`;
+
+                  return author.lead
+                    ? `<span>👑</span><strong>${formattedName}</strong>`
+                    : author.name === "Zheng Yuan"
                       ? `<strong>${formattedName}</strong>`
                       : formattedName;
-                  })
-                  .join(", ")}.
-                <span style="font-weight: 450">${paper.conference}.</span>
-                <div style="height: 0.375em"></div>
+                })
+                .join(", ")
+              }.
+              <span style="font-weight: 450">&nbsp;${paper.conference}.</span>
+              <div style="height: 0.375em"></div>
                 ${paper.links
                   .map((link) => `<a href="${link.url}">${link.text}</a>`)
                   .join(" / ")}
@@ -237,6 +310,21 @@
           player.src = ""; 
           modal.style.display = "none";
         }
+
+        function openImageModal(src) {
+          const modal = document.getElementById("image-modal");
+          const img = document.getElementById("image-modal-content");
+          img.src = src;
+          modal.style.display = "flex";
+        }
+
+        function closeImageModal() {
+          const modal = document.getElementById("image-modal");
+          const img = document.getElementById("image-modal-content");
+          img.src = "";
+          modal.style.display = "none";
+        }
+
         function filterCategory(category) {
           const allItems = document.querySelectorAll("#paper-list li");
           allItems.forEach(item => {
@@ -257,12 +345,12 @@
         });
       </script>
     </section>
-    <!-- <section>
+    <section>
       <h2>Misc</h2>
-      <p> I like sunsets. Every year from Berkeley, in early November, the sun sets over the golden gate:</p>
+      <p>Some casual shots I took :)</p>
 
       <div style="display: block">
-        <img
+        <!-- <img
           src="./assets/sunset_small.jpeg"
           alt="A photo of a sunset over the golden gate, taken by the author"
           style="
@@ -272,9 +360,12 @@
             object-fit: cover;
             border-radius: 5%;
           "
-        />
+        /> -->
+        <img src="./assets/shot1.JPG" alt="photo1" style="width: 33%; border-radius: 0.5em;">
+        <img src="./assets/shot2.JPG" alt="photo2" style="width: 33%; border-radius: 0.5em;">
+        <img src="./assets/shot3.JPG" alt="photo3" style="width: 33%; border-radius: 0.5em;">
       </div>
-    </section> -->
+    </section>
     <div style="height: 1em"></div>
     <section>
       <em style="color: #777">
@@ -291,5 +382,11 @@
         <video id="video-modal-player" controls autoplay></video>
       </div>
     </div>
+    <div id="image-modal" class="video-modal" onclick="closeImageModal()">
+      <div class="video-modal-content" onclick="event.stopPropagation()">
+        <img id="image-modal-content" src="" alt="Preview" />
+      </div>
+    </div>
+    
   </body>
 </html>
