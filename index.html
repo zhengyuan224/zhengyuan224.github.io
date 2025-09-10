@@ -85,6 +85,19 @@
 
     <section>
       <h2>Work Experience</h2>
+
+      <div class="experience-entry">
+        <div class="experience-header">
+          <h3>Machine Learning Engineer Intern <span>@ Scam AI</span></h3>
+          <p class="experience-date">June 2025 – September 2025</p>
+        </div>
+        <p class="experience-description-1">
+          Built an AI scam detection system that analyzes Twitter data to identify common scam types: Implemented a LangGraph workflow with Apify API for data collection, GPT-4o for content analysis, and Supabase for structured storage.
+        </p>
+        <p class="experience-description-2">
+          Developed a real-time AI voice agent that simulates scam calls for cybersecurity education: Built a multi-agent dialogue system with LiveKit, integrating STT (Deepgram), LLM (OpenAI), and 5-second voice cloning (Cartesia), supporting real-time calling via Twilio SIP + WebRTC.
+        </p>
+      </div>
     
       <div class="experience-entry">
         <div class="experience-header">
@@ -100,9 +113,7 @@
         <p class="experience-description-3">
           Developed a backend service for accessing OpenAI’s LLMs through Azure OpenAI API, supporting diverse internal applications.
         </p>
-        </div>
-
-    
+      </div>    
     </section>
     
     <section>
@@ -122,7 +133,43 @@
       <script>
 
         const papers = [
-           {
+          {
+            previewSrc: "./assets/depositphotos_318276858-stock-illustration-music-notes-icon-musical-key.jpg",
+            title:
+              "Fine-Tuning LLaMA3-8B with QLoRA for Symbolic Music Generation",
+            authors: [
+              { name: "Zheng Yuan"},
+            ],
+            conference: "Mar 2025~Jun 2025",
+            links: [
+              { text: "Demo", url: "https://drive.google.com/file/d/18PJz153zofdmdfIRK4FeDz8xF0cWOpF3/view" },
+            ],
+            summary:
+              "Fine-tuned LLaMA3-8B using QLoRA for both conditional (melody-to-accompaniment) and unconditional music generation on an A100 40GB GPU, with training times of 52 min (unconditional) and 33 min (conditional) one epoch. Achieved strong performance: Unconditional – 1.24 loss / 3.47 perplexity, Conditional – 0.62 loss / 1.85 perplexity.",
+            highlighted: true,
+            recent: true,
+            new: true,
+            category: "LLM",
+          },
+          {
+            previewSrc: "./assets/av2_motion_forecasting.png",
+            title:
+              "Trajectory Prediction with LSTM",
+            authors: [
+              { name: "Zheng Yuan"},
+            ],
+            conference: "Mar 2025~Jun 2025",
+            links: [
+              { text: "Git repo", url: "https://github.com/zhengyuan224/251final" },
+            ],
+            summary:
+              "Designed and implemented various deep learning models (LSTM, Social LSTM, Transformer) for multi-agent trajectory prediction using the Argoverse 2 dataset, focusing on capturing inter-agent interactions and temporal dynamics. Achieved best performance with a two-layer LSTM enhanced by neighborhood aggregation, reducing RMSE to 9.25 comparedto 10.43 from the baseline LSTM model.",
+            highlighted: true,
+            recent: true,
+            new: true,
+            category: "DL",
+          },
+          {
             previewSrc: "./assets/2048.mp4",
             title:
               "AI 2048",
@@ -135,9 +182,9 @@
             ],
             summary:
               "Developed an AI to play 2048 using the Expectimax, achieving high scores through probability and strategic planning.",
-            highlighted: true,
-            recent: true,
-            new: true,
+            highlighted: false,
+            recent: false,
+            new: false,
             category: "RL",
           },
           {
@@ -156,9 +203,9 @@
             `
             Collected real-world data from OKX for eight cryptocurrencies and computed daily returns, combining LSTM-based return forecasting with Mean-Variance Optimization (MVO) from Modern Portfolio Theory to optimize multi-crypto investment strategies, which improved average return from -0.0257 to 0.0155 with an acceptable increase in variance.
             `,
-            highlighted: true,
-            recent: true,
-            new: true,
+            highlighted: false,
+            recent: false,
+            new: false,
             category: "DL",
           },
           {

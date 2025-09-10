@@ -279,10 +279,10 @@ p {
 }
 
 .experience-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 240px;
   align-items: baseline;
-  flex-wrap: wrap;
+  gap: 1em;
 }
 
 .experience-header h3 {
@@ -301,6 +301,10 @@ p {
   font-size: 1em;
   font-weight: normal;
   color: #666;
+  margin: 0;
+  text-align: left;
+  grid-column: 2;
+  justify-self: start;
 }
 
 .experience-description-1 {
