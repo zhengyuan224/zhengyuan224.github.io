@@ -5,7 +5,7 @@
 
     <!-- Usual metadata. -->
     <meta charset="UTF-8" />
-    <link href="./assets/astro.jpg" rel="shortcut icon" type="image/x-icon" />
+    <link href="./assets/cow.png" rel="shortcut icon" type="image/x-icon" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1"
@@ -38,7 +38,9 @@
       "
     >
       <div style="flex-grow: 1; flex-basis: 20em">
-        <h1>Zheng Yuan</h1>
+        <h1>
+          Zheng Yuan
+        </h1>
         <p>
           I am a Master student in Computer Science - AI depth at <a href="https://www.ucsd.edu/">UC San Diego</a>. I received my B.E. degree in Artificial Intelligence from <a href="https://www.shu.edu.cn/">Shanghai University</a> in 2024.
         </p>
@@ -124,6 +126,8 @@
         <button onclick="filterCategory('LLM')">Large Language Models</button>
         <button onclick="filterCategory('DL')">Deep Learning</button>
         <button onclick="filterCategory('RL')">Reinforcement Learning</button>
+        <button onclick="filterCategory('ML')">Machine Learning</button>
+        <button onclick="filterCategory('SWE')">Software Engineering</button>
         <!-- <button onclick="filterCategory('ML')">Machine Learning</button> -->
       </div>
       <!-- Paper list will be dynamically generated here -->
@@ -152,23 +156,41 @@
             category: "LLM",
           },
           {
-            previewSrc: "./assets/av2_motion_forecasting.png",
+            previewSrc: "./assets/Beethoven.jpg",
             title:
-              "Trajectory Prediction with LSTM",
+              "Composer Classification and Next Sequence Prediction",
             authors: [
               { name: "Zheng Yuan"},
             ],
             conference: "Mar 2025~Jun 2025",
             links: [
-              { text: "Git repo", url: "https://github.com/zhengyuan224/251final" },
+              { text: "Git repo", url: "https://github.com/zhengyuan224/Composer-Classification-and-Next-Sequence-Prediction" },
             ],
             summary:
-              "Designed and implemented various deep learning models (LSTM, Social LSTM, Transformer) for multi-agent trajectory prediction using the Argoverse 2 dataset, focusing on capturing inter-agent interactions and temporal dynamics. Achieved best performance with a two-layer LSTM enhanced by neighborhood aggregation, reducing RMSE to 9.25 comparedto 10.43 from the baseline LSTM model.",
+              "Extracted features from 1,210 MIDI files and applied PCA and XGBoost for dimensionality reduction, reducing feature space from 64 to 48. Evaluated CatBoost, XGBoost, LightGBM and ensemble methods with K-fold cross-validation. LightGBM achieved the highest average validation accuracy of 87.69% and 92.31% across two tasks.",
             highlighted: true,
             recent: true,
             new: true,
-            category: "DL",
-          },
+            category: "ML",
+          },    
+          {
+            previewSrc: "./assets/triton.png",
+            title:
+              "TritonTube — YouTube-like Video Streaming Platform with Distributed Storage ",
+            authors: [
+              { name: "Zheng Yuan"},
+            ],
+            conference: "Mar 2025~Jun 2025",
+            links: [
+              { text: "Git repo", url: "https://github.com/zhengyuan224/Tritontube" },
+            ],
+            summary:
+              "Built a scalable, distributed video platform using Go, gRPC, and consistent hashing for distributed storage across servers. Implemented MPEG-DASH playback, distributed storage with automatic file migration, SQLite metadata management, and FFmpeg-based video transcoding for adaptive streaming.",
+            highlighted: true,
+            recent: true,
+            new: true,
+            category: "SWE",
+          },           
           {
             previewSrc: "./assets/2048.mp4",
             title:
@@ -182,10 +204,28 @@
             ],
             summary:
               "Developed an AI to play 2048 using the Expectimax, achieving high scores through probability and strategic planning.",
-            highlighted: false,
+            highlighted: true,
             recent: false,
             new: false,
             category: "RL",
+          },
+          {
+            previewSrc: "./assets/av2_motion_forecasting.png",
+            title:
+              "Trajectory Prediction with LSTM",
+            authors: [
+              { name: "Zheng Yuan"},
+            ],
+            conference: "Mar 2025~Jun 2025",
+            links: [
+              { text: "Git repo", url: "https://github.com/zhengyuan224/251final" },
+            ],
+            summary:
+              "Designed and implemented various deep learning models (LSTM, Social LSTM, Transformer) for multi-agent trajectory prediction using the Argoverse 2 dataset, focusing on capturing inter-agent interactions and temporal dynamics. Achieved best performance with a two-layer LSTM enhanced by neighborhood aggregation, reducing RMSE to 9.25 comparedto 10.43 from the baseline LSTM model.",
+            highlighted: false,
+            recent: false,
+            new: false,
+            category: "DL",
           },
           {
             previewSrc: "./assets/lstmmvo.png",
