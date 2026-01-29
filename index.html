@@ -2,492 +2,165 @@
 <html lang="en">
 
 <head>
-  <title>Zheng Yuan</title>
+  <title>Zheng Yuan | AI & MLE</title>
 
-  <!-- Usual metadata. -->
+  <meta name="description"
+    content="Master student in CS (AI Depth) at UC San Diego. Specializing in LLMs, Deep Learning, and Generative AI." />
+  <meta property="og:title" content="Zheng Yuan - Portfolio" />
+  <meta property="og:description" content="AI & Machine Learning Engineer based in San Diego." />
+  <meta property="og:image" content="./assets/YUAN ZHENG.jpg" />
+  <meta property="og:type" content="website" />
+
   <meta charset="UTF-8" />
-  <link href="./assets/cow.png" rel="shortcut icon" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <link href="./assets/cow.png" rel="shortcut icon" type="image/x-icon" />
 
-  <!-- Webfont. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Styles. -->
-  <link href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css" rel="stylesheet" />
-  <link href="style.css" rel="stylesheet" type="text/css" />
-
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div style="height: 4em"></div>
-  <section style="
-        display: flex;
-        align-items: start;
-        gap: 2em 1.5em;
-        flex-wrap: wrap-reverse;
-      ">
-    <div style="flex-grow: 1; flex-basis: 20em">
-      <h1>
-        Zheng Yuan
-      </h1>
-      <p>
-        I am a Master student in Computer Science - AI depth at <a href="https://www.ucsd.edu/">UC San Diego</a>. I
-        received my B.E. degree in Artificial Intelligence from <a href="https://www.shu.edu.cn/">Shanghai
-          University</a> in 2024.
-      </p>
-      <p>
-        My work centers on the practical application of large language models, deep learning, and generative AI.
-        During my MLE Intern at <a href="https://www.longcheer.com/">Longcheer Tech</a>, I automated large-scale
-        functional testing using GPT-4o and developed backend services for LLM integration.
-      </p>
-      <p>
-        My academic projects span multi-cryptocurrency portfolio optimization with LSTM and MPT, few-shot 3D medical
-        image segmentation using diffusion models, and fine-tuning large models like Qwen2 and Yi with logical
-        consistency mechanisms.
-        I also built a deep learning training platform that supports classic models such as ResNet, LSTM, and
-        Transformer.
-      </p>
-      <p>
-        I'm passionate about building at the intersection of applied machine learning and state-of-the-art model
-        development.
-      </p>
-      <p>
-        <span style="position: relative; display: inline-block;">
-          <a href="#" onclick="copyEmail(event)" id="copy-email-link"
-            style="text-decoration: none; cursor: pointer; color: #007acc;">
-            Email
-          </a>
-          <span id="copy-status" class="copied-tooltip">Copied!</span>
-        </span>
-        <!-- &nbsp;/&nbsp;
-          <a href="https://twitter.com/ChungMinKim">Twitter</a> -->
-        &nbsp;/&nbsp;
-        <a href="https://github.com/zhengyuan224">Github</a>
-        &nbsp;/&nbsp;
-        <a href="https://drive.google.com/file/d/1hsrQgLM6el3NnsuMqIHEBnv_9qzIzzYP/view?usp=sharing">Resume</a>
-        &nbsp;/&nbsp;
-        <a href="https://www.linkedin.com/in/zheng-yuan-699a10328/">Linkedin</a>
-      </p>
-    </div>
-    <div style="display: block">
-      <img src="./assets/YUAN ZHENG.jpg" alt="A photo of the author" style="
-            width: 12em;
-            height: auto;
-            border-radius: 5%;
-          " />
-    </div>
-  </section>
 
-  <section>
-    <h2>Work Experience</h2>
-
-    <div class="experience-entry">
-      <div class="experience-header">
-        <h3>Machine Learning Engineer Intern <span>@ Scam AI</span></h3>
-        <p class="experience-date">June 2025 – September 2025</p>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">Zheng Yuan</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#misc">Photos</a>
       </div>
-      <p class="experience-description-1">
-        Built an AI scam detection system that analyzes Twitter data to identify common scam types: Implemented a
-        LangGraph workflow with Apify API for data collection, GPT-4o for content analysis, and Supabase for structured
-        storage.
-      </p>
-      <p class="experience-description-2">
-        Developed a real-time AI voice agent that simulates scam calls for cybersecurity education: Built a multi-agent
-        dialogue system with LiveKit, integrating STT (Deepgram), LLM (OpenAI), and 5-second voice cloning (Cartesia),
-        supporting real-time calling via Twilio SIP + WebRTC.
-      </p>
     </div>
+  </nav>
 
-    <div class="experience-entry">
-      <div class="experience-header">
-        <h3>Machine Learning Engineer Intern <span>@ Longcheer Tech</span></h3>
-        <p class="experience-date">August 2024 – September 2024</p>
+  <div class="container">
+
+    <section class="hero reveal">
+      <h1>Designing Intelligence.<br>Engineering Future.</h1>
+      <p>Master student in CS (AI Depth) at UC San Diego.<br>Ex-Intern at Scam AI & Longcheer Tech.</p>
+
+      <div class="social-links">
+        <a href="#" id="email-btn" onclick="copyEmail(event)" class="btn primary">
+          <span id="email-text">Email Me</span>
+        </a>
+        <a href="https://github.com/zhengyuan224" class="btn">GitHub</a>
+        <a href="https://www.linkedin.com/in/zheng-yuan-699a10328/" class="btn">LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1hsrQgLM6el3NnsuMqIHEBnv_9qzIzzYP/view?usp=sharing"
+          class="btn">Resume</a>
       </div>
-      <p class="experience-description-1">
-        Automated functional testing for intelligent devices (mainly Xiaomi smartphones and tablets) using LLMs.
-      </p>
-      <p class="experience-description-2">
-        Applied GPT-4o with prompt engineering for entity recognition (1,022 use cases) and intent extraction (500
-        failed use cases) in functional testing, matching intents to database entities to identify and label unsupported
-        features and reduce manual effort.
-      </p>
-      <p class="experience-description-3">
-        Developed a backend service for accessing OpenAI’s LLMs through Azure OpenAI API, supporting diverse internal
-        applications.
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <!-- <p>⚙️ Under construction ⚙️</p> -->
-    <h2>Projects</h2>
-    <div id="category-filter">
-      <button onclick="filterCategory('ALL')">All</button>
-      <button onclick="filterCategory('LLM')">Large Language Models</button>
-      <button onclick="filterCategory('DL')">Deep Learning</button>
-      <button onclick="filterCategory('RL')">Reinforcement Learning</button>
-      <button onclick="filterCategory('ML')">Machine Learning</button>
-      <button onclick="filterCategory('SWE')">Software Engineering</button>
-      <!-- <button onclick="filterCategory('ML')">Machine Learning</button> -->
-    </div>
-    <!-- Paper list will be dynamically generated here -->
-    <ul id="paper-list" style="margin-top: 1em" data-show-recent="false"></ul>
-    <!-- [ <a href="#" onclick="toggleRecentPapers(event)">Show older papers</a> ] -->
-    <!-- Generate paper list. -->
-    <script>
+    <section id="about" class="reveal">
+      <div class="about-card">
+        <div class="about-content">
+          <h2>About Me</h2>
+          <p>
+            I am a Master student in Computer Science (AI Depth) at <a href="https://www.ucsd.edu/">UC San Diego</a>.
+            Previously, I received my B.E. in Artificial Intelligence from <a href="https://www.shu.edu.cn/">Shanghai
+              University</a> in 2024.
+          </p>
+          <br>
+          <p>
+            My work centers on the practical application of <strong>Large Language Models</strong>, <strong>Deep
+              Learning</strong>, and <strong>Generative AI</strong>.
+            I have extensive experience fine-tuning large-scale models (such as Qwen2 and Yi) and building scalable
+            backend systems for LLM integration.
+          </p>
+          <br>
+          <p>
+            I am passionate about bridging the gap between state-of-the-art research and real-world engineering.
+            From optimizing crypto portfolios using LSTMs to developing AI defense systems against scams, I enjoy
+            solving complex problems with data-driven solutions.
+          </p>
+        </div>
+        <img src="./assets/YUAN ZHENG.jpg" alt="Zheng Yuan" class="profile-photo" />
+      </div>
+    </section>
 
-      const papers = [
-        {
-          previewSrc: "./assets/depositphotos_318276858-stock-illustration-music-notes-icon-musical-key.jpg",
-          title:
-            "Fine-Tuning LLaMA3-8B with QLoRA for Symbolic Music Generation",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Mar 2025~Jun 2025",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/music_generation" },
-            { text: "Demo", url: "https://drive.google.com/file/d/18PJz153zofdmdfIRK4FeDz8xF0cWOpF3/view" },
-          ],
-          summary:
-            "Fine-tuned LLaMA3-8B using QLoRA for both conditional (melody-to-accompaniment) and unconditional music generation on an A100 40GB GPU, with training times of 52 min (unconditional) and 33 min (conditional) one epoch. Achieved strong performance: Unconditional – 1.24 loss / 3.47 perplexity, Conditional – 0.62 loss / 1.85 perplexity.",
-          highlighted: true,
-          recent: true,
-          new: true,
-          category: "LLM",
-        },
-        {
-          previewSrc: "./assets/Beethoven.jpg",
-          title:
-            "Composer Classification and Next Sequence Prediction",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Mar 2025~Jun 2025",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/Composer-Classification-and-Next-Sequence-Prediction" },
-          ],
-          summary:
-            "Extracted features from 1,210 MIDI files and applied PCA and XGBoost for dimensionality reduction, reducing feature space from 64 to 48. Evaluated CatBoost, XGBoost, LightGBM and ensemble methods with K-fold cross-validation. LightGBM achieved the highest average validation accuracy of 87.69% and 92.31% across two tasks.",
-          highlighted: true,
-          recent: true,
-          new: true,
-          category: "ML",
-        },
-        {
-          previewSrc: "./assets/triton.png",
-          title:
-            "TritonTube — YouTube-like Video Streaming Platform with Distributed Storage ",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Mar 2025~Jun 2025",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/Tritontube" },
-          ],
-          summary:
-            "Built a scalable, distributed video platform using Go, gRPC, and consistent hashing for distributed storage across servers. Implemented MPEG-DASH playback, distributed storage with automatic file migration, SQLite metadata management, and FFmpeg-based video transcoding for adaptive streaming.",
-          highlighted: true,
-          recent: true,
-          new: true,
-          category: "SWE",
-        },
-        {
-          previewSrc: "./assets/2048.mp4",
-          title:
-            "AI 2048",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Jan 2025~Mar 2025",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/2048AI" },
-          ],
-          summary:
-            "Developed an AI to play 2048 using the Expectimax, achieving high scores through probability and strategic planning.",
-          highlighted: true,
-          recent: false,
-          new: false,
-          category: "RL",
-        },
-        {
-          previewSrc: "./assets/av2_motion_forecasting.png",
-          title:
-            "Trajectory Prediction with LSTM",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Mar 2025~Jun 2025",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/251final" },
-          ],
-          summary:
-            "Designed and implemented various deep learning models (LSTM, Social LSTM, Transformer) for multi-agent trajectory prediction using the Argoverse 2 dataset, focusing on capturing inter-agent interactions and temporal dynamics. Achieved best performance with a two-layer LSTM enhanced by neighborhood aggregation, reducing RMSE to 9.25 comparedto 10.43 from the baseline LSTM model.",
-          highlighted: false,
-          recent: false,
-          new: false,
-          category: "DL",
-        },
-        {
-          previewSrc: "./assets/lstmmvo.png",
-          title:
-            "Quantitative Optimization of Multi-Crypto Investment Portfolios using LSTM & MPT",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Jan 2025~Mar 2025",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/Multi-Crypto-Investment-Portfolios" },
-            { text: "Report (English)", url: "https://drive.google.com/file/d/15DpqUIzlJGGnx6x8Zoadb_otJBPP6Ks3/view?usp=sharing" },
-          ],
-          summary:
-            `
-            Collected real-world data from OKX for eight cryptocurrencies and computed daily returns, combining LSTM-based return forecasting with Mean-Variance Optimization (MVO) from Modern Portfolio Theory to optimize multi-crypto investment strategies, which improved average return from -0.0257 to 0.0155 with an acceptable increase in variance.
-            `,
-          highlighted: false,
-          recent: false,
-          new: false,
-          category: "DL",
-        },
-        {
-          previewSrc: "./assets/showdata.png",
-          title: "LoRA Fine-Tuning Qwen2 & Yi with Consistency Fallback for Logical Reasoning ",
-          authors: [
-            { name: "Zheng Yuan", lead: true },
-            { name: "Yiyang Zheng" },
-            { name: "Yunzhe Li" },
-          ],
-          conference: "Jul 2024~Aug 2024",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/finetune" },
-          ],
-          summary:
-            `
-           Fine-tuned Qwen2-72B-Instruct and Yi-1.5-34B models using LoRA on an NVIDIA A800-80GB GPU via the LLaMA-Factory framework. 
-           Implemented a consistency-based fallback strategy that compares outputs from two fine-tuned LLMs and reverts to CoT prompting when inconsistencies arise. 
-           Achieved a final accuracy of 0.8690.
-            `  ,
-          recent: true,
-          new: false,
-          category: "LLM",
-        },
-        {
-          previewSrc: "./assets/dl.mp4",
-          title: "Deep Learning Models Training Platform for Multi-Domain Applications ",
-          authors: [
-            { name: "Zheng Yuan" },
-          ],
-          conference: "Jan 2024~May 2024",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/DLplatform" },
-            { text: "Report (Chinese)", url: "https://drive.google.com/file/d/1JWPmzGX-ETbru1mxsOqkXzZV6yIPrz69/view?usp=sharing" },
-          ],
-          summary:
-            `
-            Developed a full-stack platform with  Django, TensorFlow, jQuery, Bootstrap and MySQL, 
-            supporting training and inference for 17 classic deep learning models (e.g., ResNet, LSTM, Transformer). 
-            Extracted user intents using Jieba, KeyBERT, and FuzzyWuzzy to recommend models, with a UI for customizing parameters and triggering backend training.
-            `  ,
-          recent: true,
-          new: false,
-          category: "DL",
-        },
-        {
-          previewSrc: "./assets/cancer.mp4",
-          title: "Few-Shot Semi-Supervised 3D Medical Segmentation with Diffusion Model",
-          authors: [
-            { name: "Zheng Yuan", lead: true },
-            { name: "Yiyang Zheng" },
-            { name: "Pengxiang Li" },
-          ],
-          conference: "Apr 2023~Jan 2024",
-          links: [
-            { text: "Git repo", url: "https://github.com/zhengyuan224/3D-Medical-Segmentation-with-Diffusion-Model" },
-            { text: "Report (Chinese)", url: "https://drive.google.com/file/d/1CyGRKUUG47uSGNoVx-EN0SZitCEC4gpr/view?usp=sharing" },
-          ],
-          summary:
-            `
-            Applied Medical Diffusion to generate 200 3D CT scans from 24 samples for few-shot learning, improving segmentation performance with limited data. 
-            Used U-Net and DeepAtlas to segment tumors, bladder wall, and background, raising the Dice score from 0.81 to 0.85.
-            `  ,
-          recent: true,
-          new: false,
-          category: "DL",
-        },
-      ];
-      function copyEmail(event) {
-        event.preventDefault();
+    <section id="experience" class="reveal">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="experience-list">
 
-        const email = "yuanzzzhg@gmail.com";
-        const status = document.getElementById("copy-status");
+        <div class="exp-item reveal">
+          <div class="exp-date">Jun 2025 – Sep 2025</div>
+          <div class="exp-details">
+            <h3>Machine Learning Engineer Intern <span>@ Scam AI</span></h3>
+            <div class="exp-desc">
+              Built an AI scam detection system that analyzes Twitter data to identify common scam types: Implemented a
+              LangGraph workflow with Apify API for data collection, GPT-4o for content analysis, and Supabase for
+              structured storage.
+              <br><br>
+              Developed a real-time AI voice agent that simulates scam calls for cybersecurity education: Built a
+              multi-agent dialogue system with LiveKit, integrating STT (Deepgram), LLM (OpenAI), and 5-second voice
+              cloning (Cartesia).
+            </div>
+          </div>
+        </div>
 
-        navigator.clipboard.writeText(email).then(() => {
-          status.classList.add("show");
-          setTimeout(() => {
-            status.classList.remove("show");
-          }, 1500);
-        }).catch(err => {
-          alert("Failed to copy.");
-        });
-      }
-      function generatePaperList() {
-        const paperList = document.getElementById("paper-list");
-        paperList.innerHTML = "";
-        papers.forEach((paper) => {
-          const li = document.createElement("li");
-          li.classList.add(`category-${paper.category.toLowerCase()}`);
-          if (paper.highlighted) {
-            li.classList.add("paper-highlighted");
-          }
-          // if (paper.recent) {
-          //   li.classList.add("paper-recent");
-          // }
-          li.classList.add("paper");
-          li.innerHTML = `
-              ${paper.previewSrc.endsWith(".mp4")
-              ? `<video class="paper-visual" src="${paper.previewSrc}" loop muted autoplay playsinline onclick="openVideoModal('${paper.previewSrc}')"></video>`
-              : `<img class="paper-visual" src="${paper.previewSrc}" alt="${paper.title}" onclick="openImageModal('${paper.previewSrc}')">`
+        <div class="exp-item reveal">
+          <div class="exp-date">Aug 2024 – Sep 2024</div>
+          <div class="exp-details">
+            <h3>Machine Learning Engineer Intern <span>@ Longcheer Tech</span></h3>
+            <div class="exp-desc">
+              Automated functional testing for intelligent devices (mainly Xiaomi smartphones) using LLMs.
+              Applied GPT-4o with prompt engineering for entity recognition (1,022 use cases) and intent extraction,
+              reducing manual effort.
+              <br><br>
+              Developed a backend service for accessing OpenAI’s LLMs through Azure OpenAI API, supporting diverse
+              internal applications.
+            </div>
+          </div>
+        </div>
 
-            }
-              <div class="paper-textual">
-                <h3>
-                  ${paper.title}
-                  ${paper.new ? '<img src="./assets/new_animated.gif" alt="Blinking icon that says \'new\'." />' : ""}
-                </h3>
-                <div style="height: 0.1em"></div>
-              ${paper.authors
-              .map((author) => {
-                const names = author.name.split(" ");
-                const firstName = names.slice(0, -1).join("&nbsp;");
-                const lastName = names[names.length - 1];
-                const formattedName = `${firstName}&nbsp;${lastName}`;
+      </div>
+    </section>
 
-                return author.lead
-                  ? `<span>👑</span><strong>${formattedName}</strong>`
-                  : author.name === "Zheng Yuan"
-                    ? `<strong>${formattedName}</strong>`
-                    : formattedName;
-              })
-              .join(", ")
-            }.
-              <span style="font-weight: 450">&nbsp;${paper.conference}.</span>
-              <div style="height: 0.375em"></div>
-                ${paper.links
-              .map((link) => `<a href="${link.url}">${link.text}</a>`)
-              .join(" / ")}
-                <div style="height: 0.375em"></div>
-                <em style="opacity: 0.625">${paper.summary}</em>
-              </div>
-            `;
-          paperList.appendChild(li);
-        });
-      }
-      // function toggleRecentPapers(event) {
-      //   event.preventDefault();
-      //   const paperList = document.getElementById("paper-list");
-      //   const showRecent = paperList.dataset.showRecent === "true";
-      //   paperList.dataset.showRecent = (!showRecent).toString();
-      //   event.target.textContent = showRecent
-      //     ? "Show older papers"
-      //     : "Hide older papers";
-      // }
-      function openVideoModal(src) {
-        const modal = document.getElementById("video-modal");
-        const player = document.getElementById("video-modal-player");
-        player.src = src;
-        modal.style.display = "flex";
-        player.muted = false;
-        player.play().catch(e => console.warn("Play error:", e));
-      }
+    <section id="projects" class="reveal">
+      <h2 class="section-title">Selected Projects</h2>
 
-      function closeVideoModal() {
-        const modal = document.getElementById("video-modal");
-        const player = document.getElementById("video-modal-player");
-        player.pause();
-        player.src = "";
-        modal.style.display = "none";
-      }
+      <div id="category-filter">
+        <button onclick="filterCategory('ALL')" class="active">All</button>
+        <button onclick="filterCategory('LLM')">LLM</button>
+        <button onclick="filterCategory('DL')">Deep Learning</button>
+        <button onclick="filterCategory('RL')">Reinforcement Learning</button>
+        <button onclick="filterCategory('ML')">Machine Learning</button>
+        <button onclick="filterCategory('SWE')">Software Eng</button>
+      </div>
 
-      function openImageModal(src) {
-        const modal = document.getElementById("image-modal");
-        const img = document.getElementById("image-modal-content");
-        img.src = src;
-        modal.style.display = "flex";
-      }
+      <div id="paper-list" class="projects-grid"></div>
+    </section>
 
-      function closeImageModal() {
-        const modal = document.getElementById("image-modal");
-        const img = document.getElementById("image-modal-content");
-        img.src = "";
-        modal.style.display = "none";
-      }
+    <section id="misc" style="margin-bottom: 80px;" class="reveal">
+      <h2 class="section-title">Life through a Lens</h2>
+      <div class="photo-grid">
+        <img src="./assets/shot1.JPG" alt="Photography" loading="lazy">
+        <img src="./assets/shot2.JPG" alt="Photography" loading="lazy">
+        <img src="./assets/shot3.JPG" alt="Photography" loading="lazy">
+      </div>
+    </section>
 
-      function filterCategory(category) {
-        const allItems = document.querySelectorAll("#paper-list li");
-        allItems.forEach(item => {
-          if (category === "ALL") {
-            item.style.display = "flex";
-          } else {
-            const match = item.classList.contains(`category-${category.toLowerCase()}`);
-            item.style.display = match ? "flex" : "none";
-          }
-        });
-        const buttons = document.querySelectorAll("#category-filter button");
-        buttons.forEach(btn => btn.classList.remove("active"));
-        document.querySelector(`#category-filter button[onclick*="${category}"]`).classList.add("active");
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        generatePaperList();
-        filterCategory("ALL");
-      });
-    </script>
-  </section>
-  <section>
-    <h2>Misc</h2>
-    <p>Some casual shots I took :)</p>
+    <footer>
+      <p>Designed by Zheng Yuan. Inspired by Apple & Gemini.</p>
+    </footer>
 
-    <div style="display: block">
-      <!-- <img
-          src="./assets/sunset_small.jpeg"
-          alt="A photo of a sunset over the golden gate, taken by the author"
-          style="
-            width: 13em;
-            height: auto;
-            aspect-ratio: 1.5;
-            object-fit: cover;
-            border-radius: 5%;
-          "
-        /> -->
-      <img src="./assets/shot1.JPG" alt="photo1" style="width: 33%; border-radius: 0.5em;">
-      <img src="./assets/shot2.JPG" alt="photo2" style="width: 33%; border-radius: 0.5em;">
-      <img src="./assets/shot3.JPG" alt="photo3" style="width: 33%; border-radius: 0.5em;">
-    </div>
-  </section>
-  <div style="height: 1em"></div>
-  <section>
-    <em style="color: #777">
-      Website design borrows from
-      <a href="https://jonbarron.info/">Jon Barron</a> and
-      <a href="https://brentyi.github.io/">Brent Yi</a>.
-      Forked from
-      <a href="https://github.com/chungmin99/">Chung Min Kim</a>.
-    </em>
-  </section>
-  <div style="height: 2em"></div>
+  </div>
+
   <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
     <div class="video-modal-content" onclick="event.stopPropagation()">
-      <video id="video-modal-player" controls autoplay></video>
+      <video id="video-modal-player" controls></video>
     </div>
   </div>
+
   <div id="image-modal" class="video-modal" onclick="closeImageModal()">
     <div class="video-modal-content" onclick="event.stopPropagation()">
       <img id="image-modal-content" src="" alt="Preview" />
     </div>
   </div>
+
+  <script src="script.js"></script>
 
 </body>
 
