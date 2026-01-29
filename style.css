@@ -499,165 +499,170 @@ footer {
   text-transform: uppercase;
 }
 
-/* --- MOBILE OPTIMIZATIONS (FINAL CLEAN VERSION) --- */
 @media (max-width: 768px) {
 
-  /* 1. Hero 区域：调整留白 */
+  /* --- 1. Hero 首屏优化 --- */
   .hero {
-    padding-top: 120px;
+    padding-top: 110px;
+    /* 减小留白 */
     padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 
   .hero h1 {
-    font-size: 38px;
-    /* 字体大小适中 */
+    font-size: 36px;
     line-height: 1.2;
+    padding: 0 16px;
   }
 
   .hero p {
-    font-size: 18px;
-  }
-
-  /* 2. 导航栏调整 */
-  .nav-container {
+    font-size: 16px;
     padding: 0 20px;
   }
 
-  .nav-links {
-    gap: 16px;
-    display: none;
-    /* 建议手机端隐藏链接，保持顶部清爽，或者保留看你喜好 */
+  .social-links {
+    flex-wrap: wrap;
+    padding: 0 20px;
+    gap: 12px;
   }
 
-  /* 3. 关于我：图片在上，文字在下，居中显示 */
+  .social-links .btn {
+    flex: 1 1 calc(50% - 12px);
+    min-width: auto;
+  }
+
+  /* --- 2. About 区域：上下堆叠，照片保持原样 --- */
   .about-card {
     flex-direction: column-reverse;
-    /* 反转顺序：让HTML里在后面的图片跑到最上面 */
-    padding: 32px 24px;
+    /* 图片在上，文字在下 */
+    padding: 24px;
     gap: 24px;
-    text-align: center;
-    height: auto;
+    text-align: left;
+    /* 文字保持左对齐 */
   }
 
   .profile-photo {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    /* 宽度占满容器 */
+    max-width: 100%;
+    /* 移除可能的限制 */
+    height: auto;
+    /* 高度自适应，保持原比例 */
     margin: 0 auto;
-    border-radius: 50%;
-    /* 圆形头像更现代 */
-  }
-
-  .about-content {
-    padding: 0;
+    border-radius: var(--radius-l);
+    /* 保持原本的大圆角风格 */
+    /* 注意：这里去掉了 border-radius: 50% */
   }
 
   .about-content h2 {
     text-align: center;
+    /* 标题居中 */
+    font-size: 26px;
   }
 
-  /* 4. 核心：分类过滤器支持横向滚动，不换行 */
+  .about-content p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* --- 3. 过滤器：横向滑动 --- */
   #category-filter {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    /* iOS 顺滑滚动 */
-
-    /* 智能宽度计算：撑满屏幕边缘 */
-    width: calc(100% + 48px);
+    width: 100%;
     margin-left: -24px;
-    /* 抵消 container 的 padding */
-    padding: 8px 24px;
-    margin-bottom: 32px;
-
-    background: transparent;
-    border-radius: 0;
+    padding: 4px 24px 12px 24px;
+    width: calc(100% + 48px);
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* Firefox 隐藏滚动条 */
   }
 
   #category-filter::-webkit-scrollbar {
     display: none;
-    /* Chrome/Safari 隐藏滚动条 */
   }
 
   #category-filter button {
     flex: 0 0 auto;
-    /* 防止按钮被压缩 */
     margin-right: 8px;
-    background: rgba(118, 118, 128, 0.12);
-    /* 浅灰底色 */
-    border: none;
+    padding: 8px 16px;
   }
 
-  #category-filter button.active {
-    background: var(--text-primary);
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  /* 5. 项目列表：回归单列大图布局 */
+  /* --- 4. 项目列表 (Projects)：改为横向滑动 --- */
   .projects-grid {
-    grid-template-columns: 1fr;
-    /* 一行一个 */
-    gap: 24px;
-    display: grid;
-    /* 确保是 grid 布局 */
-    margin: 0;
-    padding: 0;
-    overflow: visible;
-    /* 禁用之前的滑动溢出 */
+    display: flex;
+    /* 启用 Flex 布局 */
+    grid-template-columns: none;
+    /* 禁用 Grid */
+    overflow-x: auto;
+    /* 允许横向滚动 */
+    scroll-snap-type: x mandatory;
+    /* 自动对齐 */
+    gap: 16px;
+
+    /* 边缘对齐修正 */
+    margin-left: -24px;
+    width: calc(100% + 48px);
+    padding: 10px 24px 30px 24px;
+    /* 底部加 Padding 防止阴影被切 */
   }
 
   .project-card {
-    min-width: auto;
-    /* 重置之前的宽度设置 */
-    width: 100%;
+    flex: 0 0 85%;
+    /* 每个卡片占屏幕宽度的 85% */
+    width: 85%;
+    /* 确保宽度生效 */
+    scroll-snap-align: center;
+    /* 停止时居中 */
     margin-bottom: 0;
+    /* 移除可能的底部间距 */
   }
 
+  .project-card:hover {
+    transform: none;
+    /* 手机端移除上浮特效 */
+  }
+
+  /* 调整卡片内图片高度 */
   .card-visual {
-    aspect-ratio: 16/10;
-    /* 图片比例 */
+    aspect-ratio: 16/9;
   }
 
-  /* 6. 工作经历：左侧蓝色装饰线风格 */
-  .exp-item {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 24px;
-    /* 特色样式 */
-    border-left: 4px solid var(--accent-blue);
-    border-radius: 4px var(--radius-m) var(--radius-m) 4px;
-  }
-
-  .exp-date {
-    color: var(--accent-blue);
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  /* 7. 社交按钮 */
-  .social-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn {
-    flex: 1 1 140px;
-    /* 弹性宽度，最小140px */
-  }
-
-  /* 8. 照片墙：双列 */
+  /* --- 5. 照片墙 (Photos)：横向滑动 --- */
   .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin-left: -24px;
+    width: calc(100% + 48px);
+    padding: 0 24px 24px;
   }
 
   .photo-grid img {
-    height: 160px;
-    /* 稍微减小高度适配双列 */
+    flex: 0 0 85%;
+    height: 280px;
+    scroll-snap-align: center;
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* --- 6. 其他调整 --- */
+  .exp-item {
+    padding: 24px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .exp-date {
+    font-size: 13px;
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 24px;
   }
 }
