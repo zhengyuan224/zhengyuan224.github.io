@@ -97,10 +97,6 @@ nav {
   color: var(--text-secondary);
 }
 
-.nav-links a:hover {
-  color: var(--text-primary);
-}
-
 /* --- HERO SECTION --- */
 .hero {
   padding-top: 180px;
@@ -117,6 +113,7 @@ nav {
   margin-bottom: 24px;
   background: linear-gradient(135deg, #000000 10%, #3A3A3C 55%, #8E8E93 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -146,11 +143,6 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.btn:active {
-  transform: scale(0.96);
-}
-
-/* 增加点击反馈 */
 .btn.primary {
   background: var(--text-primary);
   color: white;
@@ -182,10 +174,6 @@ nav {
 .about-content h2 {
   font-size: 28px;
   margin-bottom: 24px;
-}
-
-.about-content a {
-  color: var(--accent-blue);
 }
 
 .profile-photo {
@@ -224,6 +212,7 @@ nav {
   cursor: pointer;
   color: #636366;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 #category-filter button.active {
@@ -251,15 +240,15 @@ nav {
   height: 100%;
 }
 
-.project-card:active {
-  transform: scale(0.98);
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
 }
 
 .card-visual {
   width: 100%;
   aspect-ratio: 16/10;
   object-fit: cover;
-  background: #f0f0f0;
 }
 
 .card-content {
@@ -324,11 +313,6 @@ nav {
   margin-bottom: 4px;
 }
 
-.exp-details h3 span {
-  font-weight: 400;
-  color: var(--text-secondary);
-}
-
 /* --- MISC --- */
 .photo-grid {
   display: grid;
@@ -350,4 +334,138 @@ footer {
   font-size: 13px;
   color: var(--text-secondary);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* --- 统一风格的手机端优化 --- */
+@media (max-width: 768px) {
+
+  /* 减小 Hero 间距以适应小屏幕 */
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    padding: 0 10px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    padding: 0 10px;
+  }
+
+  /* 关于我：保留大圆角卡片感，但改为上下结构 */
+  .about-card {
+    flex-direction: column-reverse;
+    padding: 32px 24px;
+    gap: 32px;
+    text-align: left;
+    /* 保持与电脑端一致的左对齐 */
+  }
+
+  .profile-photo {
+    width: 140px;
+    margin: 0;
+  }
+
+  /* 核心：分类过滤器（分段控制器）保持视觉一致，但允许横向滑动 */
+  #category-filter {
+    width: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px;
+    border-radius: 12px;
+    /* 保持大圆角 */
+    margin-left: 0;
+  }
+
+  #category-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  #category-filter button {
+    flex: 0 0 auto;
+  }
+
+  /* 卡片布局：单列显示，但保持原有的阴影和圆角变量 */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .project-card:active {
+    transform: scale(0.98);
+    transition: 0.1s;
+  }
+
+  /* 工作经历：保持 Apple 风格的卡片感 */
+  .exp-item {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 16px;
+  }
+
+  .exp-date {
+    color: var(--accent-blue);
+  }
+
+  /* 照片：两列显示，保持圆角 */
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .photo-grid img {
+    height: 200px;
+  }
+
+  /* 按钮：在手机端稍微加宽，更易点击 */
+  .social-links {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1 1 calc(50% - 16px);
+    min-width: 140px;
+  }
+}
+
+/* 弹窗样式 */
+.video-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-modal-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.video-modal video,
+.video-modal img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 16px;
+}
+
+.new-badge {
+  background: #FF2D55;
+  color: white;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  vertical-align: middle;
+  margin-left: 8px;
+  font-weight: 700;
 }
