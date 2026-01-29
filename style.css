@@ -499,45 +499,39 @@ footer {
   text-transform: uppercase;
 }
 
-/* =========================================
-   MOBILE OPTIMIZATION (FINAL REFINED)
-   ========================================= */
-
 @media (max-width: 768px) {
 
-  /* --- 1. 导航栏：Zheng Yuan 在右侧 --- */
+  /* --- 1. 导航栏：Logo 左，链接右 --- */
   .nav-container {
     padding: 0 16px;
     height: 60px;
-
-    /* 核心修改：反转横向排列顺序 */
-    /* 效果：原本在前的 Logo 跑到最右，原本在后的 Links 跑到最左 */
-    flex-direction: row-reverse;
+    display: flex;
+    /* 改回默认 row，让 Logo 在左，Links 在右 */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* 确保撑满屏幕宽度 */
   }
 
   .nav-logo {
     font-size: 16px;
     white-space: nowrap;
     font-weight: 600;
-    /* 去掉可能的 margin 干扰 */
-    margin: 0;
+    margin-right: 12px;
+    /* 给右侧留点空隙 */
   }
 
   .nav-links {
     display: flex !important;
-    /* 强制显示 */
-    gap: 14px;
-    /* 按钮间距 */
+    gap: 12px;
     font-size: 13px;
     white-space: nowrap;
     overflow-x: auto;
-    /* 屏幕太小时允许滑动，保证按钮都显示 */
-    padding-right: 10px;
-    /* 给右边留点空隙 */
+    /* 允许横向滑动 */
+
+    /* 靠右对齐 */
+    justify-content: flex-end;
+    width: 100%;
 
     /* 隐藏滚动条 */
     scrollbar-width: none;
@@ -556,7 +550,7 @@ footer {
     color: var(--text-primary);
   }
 
-  /* --- 2. Hero 首屏 --- */
+  /* --- 2. Hero 区域 --- */
   .hero {
     padding-top: 100px;
     padding-bottom: 40px;
@@ -597,11 +591,9 @@ footer {
 
   .profile-photo {
     width: 150px;
-    /* 限制照片宽度 */
     max-width: 100%;
     height: auto;
     margin: 0 auto;
-    /* 居中 */
     border-radius: var(--radius-m);
     display: block;
   }
@@ -611,24 +603,24 @@ footer {
     font-size: 24px;
   }
 
-  /* --- 4. 标签栏 (Labels)：还原背景 + 宽度自适应 --- */
+  /* --- 4. 标签栏 (Labels)：单行滑动 + 紧凑背景 --- */
   #category-filter {
     display: flex;
+    flex-wrap: nowrap;
+    /* 强制不换行 */
     gap: 2px;
     background: rgba(118, 118, 128, 0.12);
-    /* 还原灰色底槽 */
     padding: 4px;
     border-radius: 12px;
 
-    /* 关键修改：宽度自适应，不占满全屏 */
+    /* 核心逻辑：最大宽度不超屏，如果超了就滑动 */
     width: max-content;
-    max-width: 90%;
-    /* 防止超出屏幕 */
+    max-width: calc(100% - 32px);
+    /* 左右留边距 */
     margin: 0 auto 32px auto;
-    /* 居中显示 */
+    /* 居中 */
 
     overflow-x: auto;
-    /* 内部滑动 */
     scrollbar-width: none;
   }
 
@@ -639,12 +631,15 @@ footer {
   #category-filter button {
     background: transparent;
     border: none;
-    padding: 6px 12px;
+    padding: 6px 14px;
+    /* 稍微加宽点击区域 */
     font-size: 12px;
     color: var(--text-secondary);
     border-radius: 8px;
     white-space: nowrap;
+    /* 按钮内文字不换行 */
     flex: 0 0 auto;
+    /* 按钮不被压缩 */
   }
 
   #category-filter button.active {
@@ -660,17 +655,11 @@ footer {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 16px;
-
     margin-left: -24px;
     width: calc(100% + 48px);
     padding: 10px 24px 30px 24px;
-
-    /* 关键：拉伸对齐，保证卡片高度一致 */
     align-items: stretch;
-
-    /* 隐藏滚动条 */
     scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
   .projects-grid::-webkit-scrollbar {
@@ -704,7 +693,7 @@ footer {
     aspect-ratio: 16/9;
   }
 
-  /* --- 6. 工作经历：日期变蓝 --- */
+  /* --- 6. 工作经历 --- */
   .exp-item {
     padding: 24px;
     grid-template-columns: 1fr;
@@ -714,11 +703,10 @@ footer {
   .exp-date {
     font-size: 13px;
     color: var(--accent-blue);
-    /* 蓝色高亮 */
     font-weight: 600;
   }
 
-  /* --- 7. 照片墙：隐藏滚动条 --- */
+  /* --- 7. 照片墙 --- */
   .photo-grid {
     display: flex;
     overflow-x: auto;
@@ -727,9 +715,7 @@ footer {
     margin-left: -24px;
     width: calc(100% + 48px);
     padding: 0 24px 24px;
-
     scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
   .photo-grid::-webkit-scrollbar {
