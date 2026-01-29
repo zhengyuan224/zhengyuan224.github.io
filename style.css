@@ -499,179 +499,165 @@ footer {
   text-transform: uppercase;
 }
 
+/* --- MOBILE OPTIMIZATIONS (FINAL CLEAN VERSION) --- */
 @media (max-width: 768px) {
 
-  /* === 1. 全局布局与导航 === */
-  .container {
-    padding: 0 20px;
-    /* 调整全局左右边距 */
+  /* 1. Hero 区域：调整留白 */
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
+  .hero h1 {
+    font-size: 38px;
+    /* 字体大小适中 */
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  /* 2. 导航栏调整 */
   .nav-container {
-    padding: 0 16px;
-  }
-
-  .nav-logo {
-    font-size: 16px;
-    z-index: 10;
+    padding: 0 20px;
   }
 
   .nav-links {
     gap: 16px;
-    font-size: 12px;
+    display: none;
+    /* 建议手机端隐藏链接，保持顶部清爽，或者保留看你喜好 */
   }
 
-  /* === 2. Hero 区域 (首屏) === */
-  .hero {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-    margin-bottom: 16px;
-  }
-
-  .hero p {
-    font-size: 17px;
-    margin-bottom: 32px;
-  }
-
-  .social-links {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-
-  .btn {
-    width: 100%;
-    padding: 14px 20px;
-  }
-
-  /* === 3. About Me (垂直堆叠布局) === */
+  /* 3. 关于我：图片在上，文字在下，居中显示 */
   .about-card {
-    flex-direction: column;
-    /* 垂直排列 */
-    align-items: center;
-    text-align: center;
-    padding: 40px 24px;
+    flex-direction: column-reverse;
+    /* 反转顺序：让HTML里在后面的图片跑到最上面 */
+    padding: 32px 24px;
     gap: 24px;
+    text-align: center;
     height: auto;
   }
 
   .profile-photo {
-    order: -1;
-    /* 强制图片在最上方 */
-    margin: 0 auto 8px auto;
-    width: 140px;
-    height: 140px;
-    align-self: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    /* 圆形头像更现代 */
   }
 
   .about-content {
-    width: 100%;
     padding: 0;
   }
 
   .about-content h2 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 16px;
   }
 
-  /* === 4. 筛选按钮 (横向滚动) === */
+  /* 4. 核心：分类过滤器支持横向滚动，不换行 */
   #category-filter {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    width: 100%;
-    margin: 0 -20px 32px -20px;
-    /* 抵消 container padding */
-    padding: 4px 20px;
     -webkit-overflow-scrolling: touch;
+    /* iOS 顺滑滚动 */
+
+    /* 智能宽度计算：撑满屏幕边缘 */
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    /* 抵消 container 的 padding */
+    padding: 8px 24px;
+    margin-bottom: 32px;
+
+    background: transparent;
+    border-radius: 0;
     scrollbar-width: none;
-    -ms-overflow-style: none;
+    /* Firefox 隐藏滚动条 */
   }
 
   #category-filter::-webkit-scrollbar {
     display: none;
+    /* Chrome/Safari 隐藏滚动条 */
   }
 
   #category-filter button {
-    flex-shrink: 0;
-    margin-right: 4px;
+    flex: 0 0 auto;
+    /* 防止按钮被压缩 */
+    margin-right: 8px;
+    background: rgba(118, 118, 128, 0.12);
+    /* 浅灰底色 */
+    border: none;
   }
 
-  /* === 5. Projects (横向滑动卡片) === */
+  #category-filter button.active {
+    background: var(--text-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 5. 项目列表：回归单列大图布局 */
   .projects-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 16px;
-
-    /* 滑动设置 */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-
-    /* 视觉对齐与间距 */
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 40px;
-    /* 给阴影留空间 */
-
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .projects-grid::-webkit-scrollbar {
-    display: none;
+    grid-template-columns: 1fr;
+    /* 一行一个 */
+    gap: 24px;
+    display: grid;
+    /* 确保是 grid 布局 */
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    /* 禁用之前的滑动溢出 */
   }
 
   .project-card {
-    min-width: 85vw;
-    /* 卡片宽度 */
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    /* 磁吸居中 */
-    height: auto;
+    min-width: auto;
+    /* 重置之前的宽度设置 */
+    width: 100%;
     margin-bottom: 0;
   }
 
   .card-visual {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/10;
+    /* 图片比例 */
   }
 
-  .card-content {
-    padding: 20px;
-  }
-
-  .card-title {
-    font-size: 18px;
-  }
-
-  /* === 6. 工作经历 (Experience) === */
+  /* 6. 工作经历：左侧蓝色装饰线风格 */
   .exp-item {
     grid-template-columns: 1fr;
     gap: 12px;
     padding: 24px;
+    /* 特色样式 */
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 4px var(--radius-m) var(--radius-m) 4px;
   }
 
   .exp-date {
     color: var(--accent-blue);
     font-size: 14px;
+    font-weight: 600;
   }
 
-  /* === 7. 照片墙 (双列布局) === */
+  /* 7. 社交按钮 */
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    flex: 1 1 140px;
+    /* 弹性宽度，最小140px */
+  }
+
+  /* 8. 照片墙：双列 */
   .photo-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
   .photo-grid img {
-    height: 180px;
+    height: 160px;
+    /* 稍微减小高度适配双列 */
   }
 }
