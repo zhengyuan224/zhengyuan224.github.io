@@ -501,13 +501,26 @@ footer {
 
 @media (max-width: 768px) {
 
-  /* --- 1. 导航栏：Logo 左，链接右 --- */
+  /* --- 1. 导航栏：取消悬浮 + 布局调整 --- */
+  nav {
+    /* 关键修改：改为 absolute，随页面滚动消失，不再悬浮 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    /* 层级不用太高，因为不需要遮挡内容 */
+  }
+
   .nav-container {
     padding: 0 16px;
-    height: 60px;
+    height: 100%;
     display: flex;
-    /* 改回默认 row，让 Logo 在左，Links 在右 */
     flex-direction: row;
+    /* Logo左，Links右 */
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -518,7 +531,6 @@ footer {
     white-space: nowrap;
     font-weight: 600;
     margin-right: 12px;
-    /* 给右侧留点空隙 */
   }
 
   .nav-links {
@@ -527,15 +539,10 @@ footer {
     font-size: 13px;
     white-space: nowrap;
     overflow-x: auto;
-    /* 允许横向滑动 */
-
-    /* 靠右对齐 */
     justify-content: flex-end;
+    /* 靠右对齐 */
     width: 100%;
-
-    /* 隐藏滚动条 */
     scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -552,6 +559,7 @@ footer {
 
   /* --- 2. Hero 区域 --- */
   .hero {
+    /* 因为 Nav 不悬浮了，不需要太大的 padding */
     padding-top: 100px;
     padding-bottom: 40px;
     overflow: hidden;
@@ -603,22 +611,21 @@ footer {
     font-size: 24px;
   }
 
-  /* --- 4. 标签栏 (Labels)：单行滑动 + 紧凑背景 --- */
+  /* --- 4. 标签栏 (Labels)：左对齐 + 单行滑动 --- */
   #category-filter {
     display: flex;
     flex-wrap: nowrap;
-    /* 强制不换行 */
     gap: 2px;
     background: rgba(118, 118, 128, 0.12);
     padding: 4px;
     border-radius: 12px;
 
-    /* 核心逻辑：最大宽度不超屏，如果超了就滑动 */
+    /* 宽度自适应内容，不占全屏 */
     width: max-content;
-    max-width: calc(100% - 32px);
-    /* 左右留边距 */
-    margin: 0 auto 32px auto;
-    /* 居中 */
+    max-width: 100%;
+
+    /* 关键修改：左对齐 (去掉原本的 margin: 0 auto) */
+    margin: 0 0 32px 0;
 
     overflow-x: auto;
     scrollbar-width: none;
@@ -632,14 +639,11 @@ footer {
     background: transparent;
     border: none;
     padding: 6px 14px;
-    /* 稍微加宽点击区域 */
     font-size: 12px;
     color: var(--text-secondary);
     border-radius: 8px;
     white-space: nowrap;
-    /* 按钮内文字不换行 */
     flex: 0 0 auto;
-    /* 按钮不被压缩 */
   }
 
   #category-filter button.active {
@@ -693,7 +697,7 @@ footer {
     aspect-ratio: 16/9;
   }
 
-  /* --- 6. 工作经历 --- */
+  /* --- 6. 工作经历：日期变蓝 --- */
   .exp-item {
     padding: 24px;
     grid-template-columns: 1fr;
