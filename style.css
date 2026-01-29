@@ -353,14 +353,24 @@ footer {
 }
 
 /* --- MOBILE OPTIMIZATIONS (针对手机端优化) --- */
+/* --- MOBILE OPTIMIZATIONS (仅针对手机端修改) --- */
 @media (max-width: 768px) {
   .hero {
     padding-top: 120px;
     padding-bottom: 40px;
   }
 
+  /* 1. 确保名字在一行内，并根据屏幕宽度自动缩放 */
   .hero h1 {
-    font-size: 38px;
+    font-size: clamp(38px, 10vw, 56px);
+    /* 动态缩放字体 */
+    white-space: nowrap;
+    /* 强制不换行 */
+    overflow: hidden;
+    /* 防止溢出 */
+    text-overflow: clip;
+    padding: 0 10px;
+    /* 留出微小边距 */
   }
 
   .hero p {
@@ -375,6 +385,41 @@ footer {
     gap: 16px;
   }
 
+  /* 2. 项目分类：改为横向滑动形式 */
+  #category-filter {
+    display: flex;
+    flex-wrap: nowrap;
+    /* 强制不换行 */
+    overflow-x: auto;
+    /* 允许横向滚动 */
+    -webkit-overflow-scrolling: touch;
+    /* iOS 滑动回弹 */
+
+    /* 视觉优化：全宽滑动 */
+    width: calc(100% + 48px);
+    /* 扩展到容器边缘 */
+    margin-left: -24px;
+    /* 抵消 padding */
+    padding: 8px 24px;
+    background: transparent;
+    /* 移除手机端背景框以增加留白感 */
+    border-radius: 0;
+  }
+
+  /* 隐藏滚动条 */
+  #category-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  #category-filter button {
+    flex: 0 0 auto;
+    /* 保证按钮不被压缩宽度 */
+    background: rgba(118, 118, 128, 0.12);
+    margin-right: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
   /* 关于我：图片在上，居中显示 */
   .about-card {
     flex-direction: column-reverse;
@@ -385,30 +430,6 @@ footer {
 
   .profile-photo {
     width: 120px;
-  }
-
-  /* 核心：分类过滤器支持横向滚动，不换行 */
-  #category-filter {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    width: calc(100% + 48px);
-    /* 溢出容器宽度 */
-    margin-left: -24px;
-    /* 抵消 container padding */
-    padding: 8px 24px;
-    background: transparent;
-    border-radius: 0;
-  }
-
-  #category-filter::-webkit-scrollbar {
-    display: none;
-  }
-
-  #category-filter button {
-    flex: 0 0 auto;
-    background: rgba(118, 118, 128, 0.12);
   }
 
   /* 项目与工作经历：单列布局 */
@@ -430,7 +451,6 @@ footer {
     font-size: 14px;
   }
 
-  /* 社交链接按钮在窄屏下自动调整 */
   .social-links {
     flex-wrap: wrap;
   }
@@ -447,42 +467,4 @@ footer {
   .photo-grid img {
     height: 180px;
   }
-}
-
-/* MODAL & BADGE */
-.video-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(16px);
-  z-index: 2000;
-  justify-content: center;
-  align-items: center;
-}
-
-.video-modal-content {
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.video-modal video,
-.video-modal img {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 16px;
-}
-
-.new-badge {
-  background: #FF2D55;
-  color: white;
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 99px;
-  vertical-align: middle;
-  margin-left: 8px;
-  font-weight: 700;
 }
