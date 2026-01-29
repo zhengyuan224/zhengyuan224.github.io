@@ -14,6 +14,7 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
   --shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.08);
   --shadow-active: 0 2px 8px rgba(0, 0, 0, 0.12);
+  /* 适配分段控制器的阴影 */
 
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --font-stack: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
@@ -32,14 +33,22 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  /* Prevent horizontal scroll on body */
 }
 
 a {
   text-decoration: none;
   color: inherit;
   transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.025em;
 }
 
 /* --- SCROLL REVEAL ANIMATION --- */
@@ -80,15 +89,19 @@ nav {
 
 .nav-container {
   width: 100%;
+  max-width: none;
   padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 }
 
 .nav-logo {
   font-weight: 600;
   font-size: 17px;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 .nav-links {
@@ -116,18 +129,30 @@ nav {
   font-size: 64px;
   font-weight: 700;
   line-height: 1.15;
+  margin-top: 0;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, #000000 10%, #3A3A3C 55%, #8E8E93 100%);
+  padding-bottom: 10px;
+
+  background: linear-gradient(135deg,
+      #000000 10%,
+      #3A3A3C 55%,
+      #8E8E93 100%);
+
+  background-size: 100%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* MODIFICATION: Force text to stay on one line */
-  white-space: nowrap;
 }
 
 .hero p {
   font-size: 21px;
   color: var(--text-secondary);
+  font-weight: 400;
   margin-bottom: 32px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
 }
 
 .social-links {
@@ -145,13 +170,16 @@ nav {
   border-radius: 99px;
   font-size: 14px;
   font-weight: 500;
+  color: var(--text-primary);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   border: 1px solid rgba(0, 0, 0, 0.05);
+  min-width: 100px;
 }
 
-.btn:active {
-  transform: scale(0.96);
+.btn:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
 }
 
 .btn.primary {
@@ -162,6 +190,8 @@ nav {
 .btn.success {
   background-color: var(--accent-green) !important;
   color: white !important;
+  border-color: var(--accent-green);
+  transform: scale(1.05);
 }
 
 /* --- ABOUT CARD --- */
@@ -184,79 +214,98 @@ nav {
 
 .about-content h2 {
   font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 0;
   margin-bottom: 24px;
+}
+
+.about-content strong {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .about-content a {
   color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.about-content a:hover {
+  text-decoration: underline;
 }
 
 .profile-photo {
   width: 160px;
   height: auto;
   border-radius: 20px;
+  object-fit: contain;
   box-shadow: var(--shadow-md);
   flex-shrink: 0;
+  background-color: #F5F5F7;
 }
 
-/* --- SECTIONS --- */
+/* --- BENTO GRID SYSTEM --- */
 .section-title {
   font-size: 36px;
   font-weight: 700;
-  margin: 80px 0 40px 0;
+  letter-spacing: -0.03em;
+  margin-bottom: 40px;
+  margin-top: 80px;
+  color: var(--text-primary);
 }
 
+/* --- FILTER BUTTONS (Apple Segmented Control Style) --- */
+/* 还原到最开始的“分段控制器”风格 */
 #category-filter {
   display: flex;
   gap: 2px;
+  /* 间距极小 */
   background: rgba(118, 118, 128, 0.12);
+  /* 灰色底槽 */
   padding: 4px;
   border-radius: 12px;
   width: fit-content;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+  /* 如果屏幕太窄允许换行 */
 }
 
 #category-filter button {
   border: none;
   background: transparent;
+  /* 默认无背景 */
   padding: 6px 16px;
   border-radius: 8px;
+  /* 内嵌按钮圆角 */
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   color: #636366;
-  transition: all 0.2s ease;
+  /* 默认深灰字 */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  white-space: nowrap;
 }
 
+#category-filter button:hover {
+  color: var(--text-primary);
+  /* 悬停变黑 */
+}
+
+/* 选中状态：纯白滑块 + 阴影 */
 #category-filter button.active {
   background: #FFFFFF;
   color: var(--text-primary);
+  /* 选中时文字变黑 */
   font-weight: 600;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  /* 悬浮感 */
 }
 
-/* --- PROJECTS (SLIDING LAYOUT) --- */
-/* MODIFICATION: Changed from Grid to Flex with Horizontal Scroll */
+/* --- PROJECTS GRID --- */
 .projects-grid {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  padding-bottom: 32px;
-  /* Space for shadow */
-  padding-left: 4px;
-  /* Adjust for start padding */
-  padding-right: 24px;
-  scroll-snap-type: x mandatory;
-  /* Enables the "slide" snap effect */
-  -webkit-overflow-scrolling: touch;
-  /* Smooth scrolling on iOS */
-  /* Hide Scrollbar */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.projects-grid::-webkit-scrollbar {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
 }
 
 .project-card {
@@ -267,20 +316,15 @@ nav {
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  /* Fixed width for sliding cards */
-  flex: 0 0 320px;
-  min-width: 320px;
-  scroll-snap-align: start;
-  /* Snap to start of card */
+  height: 100%;
+  position: relative;
+  cursor: default;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: scale(1.02);
   box-shadow: var(--shadow-hover);
-}
-
-.project-card:active {
-  transform: scale(0.98);
+  z-index: 10;
 }
 
 .card-visual {
@@ -288,10 +332,12 @@ nav {
   aspect-ratio: 16/10;
   object-fit: cover;
   background: #f0f0f0;
+  cursor: pointer;
+  display: block;
 }
 
 .card-content {
-  padding: 24px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -300,35 +346,45 @@ nav {
 .card-tag {
   font-size: 11px;
   font-weight: 700;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
   text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
 
 .card-title {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 8px;
   line-height: 1.3;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
 }
 
 .card-summary {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
-  flex-grow: 1;
   margin-bottom: 20px;
-  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+  line-height: 1.6;
 }
 
 .card-links a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--accent-blue);
   margin-right: 16px;
 }
 
-/* --- EXPERIENCE --- */
+.card-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- WORK EXPERIENCE --- */
 .experience-list {
   display: flex;
   flex-direction: column;
@@ -343,19 +399,21 @@ nav {
   display: grid;
   grid-template-columns: 180px 1fr;
   gap: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  /* Subtle border instead of color */
 }
 
 .exp-date {
   font-size: 16px;
   color: var(--text-secondary);
   font-weight: 500;
+  padding-top: 4px;
 }
 
 .exp-details h3 {
   font-size: 20px;
-  margin-bottom: 4px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .exp-details h3 span {
@@ -363,11 +421,19 @@ nav {
   color: var(--text-secondary);
 }
 
-/* --- MISC --- */
+.exp-desc {
+  font-size: 16px;
+  color: #424245;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* PHOTO MASONRY */
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  margin-top: 32px;
 }
 
 .photo-grid img {
@@ -375,127 +441,25 @@ nav {
   height: 260px;
   object-fit: cover;
   border-radius: var(--radius-s);
+  transition: var(--transition);
 }
 
+.photo-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* FOOTER */
 footer {
-  margin-top: 80px;
-  padding: 40px 0 60px 0;
+  margin-top: 120px;
+  padding-bottom: 60px;
   text-align: center;
   font-size: 13px;
   color: var(--text-secondary);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 40px;
 }
 
-/* --- MOBILE OPTIMIZATIONS --- */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 120px;
-    padding-bottom: 40px;
-  }
-
-  /* Responsive font size but keep nowrap */
-  .hero h1 {
-    font-size: 38px;
-    white-space: nowrap;
-  }
-
-  .hero p {
-    font-size: 18px;
-  }
-
-  .nav-container {
-    padding: 0 20px;
-  }
-
-  .nav-links {
-    gap: 16px;
-  }
-
-  /* About Me */
-  .about-card {
-    flex-direction: column-reverse;
-    padding: 32px 24px;
-    gap: 24px;
-    text-align: center;
-  }
-
-  .profile-photo {
-    width: 120px;
-  }
-
-  /* Filter Scroll */
-  #category-filter {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    width: calc(100% + 48px);
-    margin-left: -24px;
-    padding: 8px 24px;
-    background: transparent;
-    border-radius: 0;
-  }
-
-  #category-filter::-webkit-scrollbar {
-    display: none;
-  }
-
-  #category-filter button {
-    flex: 0 0 auto;
-    background: rgba(118, 118, 128, 0.12);
-  }
-
-  /* Projects Sliding (Ensure full bleed on mobile) */
-  .projects-grid {
-    margin-left: -24px;
-    width: calc(100% + 48px);
-    padding-left: 24px;
-    padding-right: 24px;
-    gap: 16px;
-  }
-
-  .project-card {
-    flex: 0 0 85%;
-    /* Slightly wider cards on mobile */
-    min-width: 85%;
-  }
-
-  /* Experience Mobile: Single Column & Clean Look */
-  /* MODIFICATION: Removed blue border-left */
-  .exp-item {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 24px;
-    border-radius: var(--radius-m);
-    /* No colored border here anymore */
-  }
-
-  .exp-date {
-    color: var(--text-secondary);
-    font-size: 14px;
-    margin-bottom: 4px;
-    display: block;
-  }
-
-  .social-links {
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    flex: 1 1 140px;
-  }
-
-  .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .photo-grid img {
-    height: 180px;
-  }
-}
-
-/* MODAL & BADGE */
+/* MODAL */
 .video-modal {
   display: none;
   position: fixed;
@@ -520,6 +484,7 @@ footer {
   max-width: 100%;
   max-height: 80vh;
   border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .new-badge {
@@ -531,4 +496,182 @@ footer {
   vertical-align: middle;
   margin-left: 8px;
   font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+
+  /* === 1. 全局布局与导航 === */
+  .container {
+    padding: 0 20px;
+    /* 调整全局左右边距 */
+  }
+
+  .nav-container {
+    padding: 0 16px;
+  }
+
+  .nav-logo {
+    font-size: 16px;
+    z-index: 10;
+  }
+
+  .nav-links {
+    gap: 16px;
+    font-size: 12px;
+  }
+
+  /* === 2. Hero 区域 (首屏) === */
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+
+  .social-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  /* === 3. About Me (垂直堆叠布局) === */
+  .about-card {
+    flex-direction: column;
+    /* 垂直排列 */
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+    gap: 24px;
+    height: auto;
+  }
+
+  .profile-photo {
+    order: -1;
+    /* 强制图片在最上方 */
+    margin: 0 auto 8px auto;
+    width: 140px;
+    height: 140px;
+    align-self: center;
+  }
+
+  .about-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .about-content h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  /* === 4. 筛选按钮 (横向滚动) === */
+  #category-filter {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    margin: 0 -20px 32px -20px;
+    /* 抵消 container padding */
+    padding: 4px 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #category-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  #category-filter button {
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+
+  /* === 5. Projects (横向滑动卡片) === */
+  .projects-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+
+    /* 滑动设置 */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+
+    /* 视觉对齐与间距 */
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    /* 给阴影留空间 */
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .projects-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-card {
+    min-width: 85vw;
+    /* 卡片宽度 */
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    /* 磁吸居中 */
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .card-visual {
+    aspect-ratio: 16/9;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  /* === 6. 工作经历 (Experience) === */
+  .exp-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px;
+  }
+
+  .exp-date {
+    color: var(--accent-blue);
+    font-size: 14px;
+  }
+
+  /* === 7. 照片墙 (双列布局) === */
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .photo-grid img {
+    height: 180px;
+  }
 }
