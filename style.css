@@ -499,23 +499,39 @@ footer {
   text-transform: uppercase;
 }
 
+/* =========================================
+   MOBILE OPTIMIZATION (FINAL REFINED)
+   ========================================= */
+
 @media (max-width: 768px) {
 
-  /* --- 1. Hero 首屏优化 --- */
+  /* --- 1. 导航栏：Zheng Yuan 不换行 --- */
+  .nav-logo {
+    white-space: nowrap;
+    /* 强制不换行 */
+    font-size: 18px;
+    /* 稍微调小一点以防万一 */
+  }
+
+  /* --- 2. Hero 首屏：文字不换行 --- */
   .hero {
     padding-top: 110px;
-    /* 减小留白 */
     padding-bottom: 40px;
+    overflow: hidden;
+    /* 防止文字溢出导致横向滚动 */
   }
 
   .hero h1 {
-    font-size: 36px;
-    line-height: 1.2;
-    padding: 0 16px;
+    font-size: 27px;
+    /* 调小字体，确保能在一行内显示 */
+    white-space: nowrap;
+    /* 强制 "Designing Intelligence." 不折行 */
+    line-height: 1.4;
+    padding: 0 10px;
   }
 
   .hero p {
-    font-size: 16px;
+    font-size: 15px;
     padding: 0 20px;
   }
 
@@ -530,51 +546,43 @@ footer {
     min-width: auto;
   }
 
-  /* --- 2. About 区域：上下堆叠，照片保持原样 --- */
+  /* --- 3. About 区域：照片缩小 --- */
   .about-card {
     flex-direction: column-reverse;
-    /* 图片在上，文字在下 */
     padding: 24px;
     gap: 24px;
     text-align: left;
-    /* 文字保持左对齐 */
   }
 
   .profile-photo {
     width: 100%;
-    /* 宽度占满容器 */
-    max-width: 100%;
-    /* 移除可能的限制 */
+    max-width: 200px;
+    /* 限制最大宽度，让照片变小 */
     height: auto;
-    /* 高度自适应，保持原比例 */
     margin: 0 auto;
-    border-radius: var(--radius-l);
-    /* 保持原本的大圆角风格 */
-    /* 注意：这里去掉了 border-radius: 50% */
+    /* 居中显示 */
+    border-radius: var(--radius-m);
+    /* 保持圆角 */
+    display: block;
   }
 
   .about-content h2 {
     text-align: center;
-    /* 标题居中 */
     font-size: 26px;
   }
 
-  .about-content p {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* --- 3. 过滤器：横向滑动 --- */
+  /* --- 4. 过滤器 (Labels)：样式优化 --- */
   #category-filter {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    width: 100%;
+    width: calc(100% + 48px);
     margin-left: -24px;
     padding: 4px 24px 12px 24px;
-    width: calc(100% + 48px);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    gap: 8px;
+    /* 按钮间距 */
   }
 
   #category-filter::-webkit-scrollbar {
@@ -583,54 +591,78 @@ footer {
 
   #category-filter button {
     flex: 0 0 auto;
-    margin-right: 8px;
-    padding: 8px 16px;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 20px;
+    /* 胶囊形状 */
+    background: #FFFFFF;
+    /* 白色背景 */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    /* 淡淡的边框 */
+    color: var(--text-secondary);
+    transition: all 0.2s;
   }
 
-  /* --- 4. 项目列表 (Projects)：改为横向滑动 --- */
+  /* 选中状态 */
+  #category-filter button.active {
+    background: var(--text-primary);
+    color: #fff;
+    border-color: var(--text-primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  /* --- 5. 项目列表：横向滑动 & 高度一致 --- */
   .projects-grid {
     display: flex;
-    /* 启用 Flex 布局 */
     grid-template-columns: none;
-    /* 禁用 Grid */
     overflow-x: auto;
-    /* 允许横向滚动 */
     scroll-snap-type: x mandatory;
-    /* 自动对齐 */
     gap: 16px;
-
-    /* 边缘对齐修正 */
     margin-left: -24px;
     width: calc(100% + 48px);
     padding: 10px 24px 30px 24px;
-    /* 底部加 Padding 防止阴影被切 */
+
+    /* 关键：拉伸子元素高度，使它们对齐 */
+    align-items: stretch;
   }
 
   .project-card {
     flex: 0 0 85%;
-    /* 每个卡片占屏幕宽度的 85% */
     width: 85%;
-    /* 确保宽度生效 */
     scroll-snap-align: center;
-    /* 停止时居中 */
     margin-bottom: 0;
-    /* 移除可能的底部间距 */
+    height: auto;
+    /* 让 Flexbox 控制高度 */
+    display: flex;
+    /* 开启 Flex 布局 */
+    flex-direction: column;
+    /* 垂直排列内容 */
   }
 
   .project-card:hover {
     transform: none;
-    /* 手机端移除上浮特效 */
   }
 
-  /* 调整卡片内图片高度 */
+  .card-content {
+    flex: 1;
+    /* 让内容区域自动填充剩余空间，保证卡片高度一致 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 让 summary 部分自动伸缩，把 links 推到底部（可选）*/
+  .card-summary {
+    flex-grow: 1;
+  }
+
   .card-visual {
     aspect-ratio: 16/9;
+    height: auto;
   }
 
-  /* --- 5. 照片墙 (Photos)：横向滑动 --- */
+  /* --- 6. 其他通用调整 --- */
   .photo-grid {
     display: flex;
-    grid-template-columns: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 16px;
@@ -647,17 +679,10 @@ footer {
     box-shadow: var(--shadow-md);
   }
 
-  /* --- 6. 其他调整 --- */
   .exp-item {
     padding: 24px;
     grid-template-columns: 1fr;
     gap: 12px;
-  }
-
-  .exp-date {
-    font-size: 13px;
-    color: var(--accent-blue);
-    font-weight: 600;
   }
 
   .section-title {
