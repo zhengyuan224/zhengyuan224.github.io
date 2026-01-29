@@ -505,84 +505,131 @@ footer {
 
 @media (max-width: 768px) {
 
-  /* --- 1. 导航栏：Zheng Yuan 不换行 --- */
-  .nav-logo {
-    white-space: nowrap;
-    /* 强制不换行 */
-    font-size: 18px;
-    /* 稍微调小一点以防万一 */
+  /* --- 1. 导航栏：Zheng Yuan 在右侧 --- */
+  .nav-container {
+    padding: 0 16px;
+    height: 60px;
+
+    /* 核心修改：反转横向排列顺序 */
+    /* 效果：原本在前的 Logo 跑到最右，原本在后的 Links 跑到最左 */
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* 确保撑满屏幕宽度 */
   }
 
-  /* --- 2. Hero 首屏：文字不换行 --- */
+  .nav-logo {
+    font-size: 16px;
+    white-space: nowrap;
+    font-weight: 600;
+    /* 去掉可能的 margin 干扰 */
+    margin: 0;
+  }
+
+  .nav-links {
+    display: flex !important;
+    /* 强制显示 */
+    gap: 14px;
+    /* 按钮间距 */
+    font-size: 13px;
+    white-space: nowrap;
+    overflow-x: auto;
+    /* 屏幕太小时允许滑动，保证按钮都显示 */
+    padding-right: 10px;
+    /* 给右边留点空隙 */
+
+    /* 隐藏滚动条 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+  }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+  }
+
+  /* --- 2. Hero 首屏 --- */
   .hero {
-    padding-top: 110px;
+    padding-top: 100px;
     padding-bottom: 40px;
     overflow: hidden;
-    /* 防止文字溢出导致横向滚动 */
   }
 
   .hero h1 {
-    font-size: 27px;
-    /* 调小字体，确保能在一行内显示 */
+    font-size: 28px;
     white-space: nowrap;
-    /* 强制 "Designing Intelligence." 不折行 */
-    line-height: 1.4;
+    margin-bottom: 16px;
     padding: 0 10px;
   }
 
   .hero p {
     font-size: 15px;
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
   .social-links {
     flex-wrap: wrap;
-    padding: 0 20px;
-    gap: 12px;
+    gap: 10px;
+    padding: 0 16px;
   }
 
   .social-links .btn {
-    flex: 1 1 calc(50% - 12px);
-    min-width: auto;
+    flex: 1 1 45%;
+    font-size: 13px;
+    padding: 10px 16px;
   }
 
-  /* --- 3. About 区域：照片缩小 --- */
+  /* --- 3. About Me：照片缩小 + 上下布局 --- */
   .about-card {
     flex-direction: column-reverse;
     padding: 24px;
-    gap: 24px;
+    gap: 20px;
     text-align: left;
   }
 
   .profile-photo {
-    width: 100%;
-    max-width: 200px;
-    /* 限制最大宽度，让照片变小 */
+    width: 150px;
+    /* 限制照片宽度 */
+    max-width: 100%;
     height: auto;
     margin: 0 auto;
-    /* 居中显示 */
+    /* 居中 */
     border-radius: var(--radius-m);
-    /* 保持圆角 */
     display: block;
   }
 
   .about-content h2 {
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
   }
 
-  /* --- 4. 过滤器 (Labels)：样式优化 --- */
+  /* --- 4. 标签栏 (Labels)：还原背景 + 宽度自适应 --- */
   #category-filter {
     display: flex;
-    flex-wrap: nowrap;
+    gap: 2px;
+    background: rgba(118, 118, 128, 0.12);
+    /* 还原灰色底槽 */
+    padding: 4px;
+    border-radius: 12px;
+
+    /* 关键修改：宽度自适应，不占满全屏 */
+    width: max-content;
+    max-width: 90%;
+    /* 防止超出屏幕 */
+    margin: 0 auto 32px auto;
+    /* 居中显示 */
+
     overflow-x: auto;
-    width: calc(100% + 48px);
-    margin-left: -24px;
-    padding: 4px 24px 12px 24px;
-    -webkit-overflow-scrolling: touch;
+    /* 内部滑动 */
     scrollbar-width: none;
-    gap: 8px;
-    /* 按钮间距 */
   }
 
   #category-filter::-webkit-scrollbar {
@@ -590,53 +637,53 @@ footer {
   }
 
   #category-filter button {
-    flex: 0 0 auto;
-    padding: 6px 14px;
-    font-size: 13px;
-    border-radius: 20px;
-    /* 胶囊形状 */
-    background: #FFFFFF;
-    /* 白色背景 */
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    /* 淡淡的边框 */
+    background: transparent;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
     color: var(--text-secondary);
-    transition: all 0.2s;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
 
-  /* 选中状态 */
   #category-filter button.active {
-    background: var(--text-primary);
-    color: #fff;
-    border-color: var(--text-primary);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background: #FFFFFF;
+    color: var(--text-primary);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   }
 
-  /* --- 5. 项目列表：横向滑动 & 高度一致 --- */
+  /* --- 5. 项目列表：隐藏滚动条 + 高度一致 --- */
   .projects-grid {
     display: flex;
     grid-template-columns: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 16px;
+
     margin-left: -24px;
     width: calc(100% + 48px);
     padding: 10px 24px 30px 24px;
 
-    /* 关键：拉伸子元素高度，使它们对齐 */
+    /* 关键：拉伸对齐，保证卡片高度一致 */
     align-items: stretch;
+
+    /* 隐藏滚动条 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .projects-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .project-card {
     flex: 0 0 85%;
     width: 85%;
     scroll-snap-align: center;
-    margin-bottom: 0;
     height: auto;
-    /* 让 Flexbox 控制高度 */
     display: flex;
-    /* 开启 Flex 布局 */
     flex-direction: column;
-    /* 垂直排列内容 */
   }
 
   .project-card:hover {
@@ -645,22 +692,33 @@ footer {
 
   .card-content {
     flex: 1;
-    /* 让内容区域自动填充剩余空间，保证卡片高度一致 */
     display: flex;
     flex-direction: column;
   }
 
-  /* 让 summary 部分自动伸缩，把 links 推到底部（可选）*/
   .card-summary {
     flex-grow: 1;
   }
 
   .card-visual {
     aspect-ratio: 16/9;
-    height: auto;
   }
 
-  /* --- 6. 其他通用调整 --- */
+  /* --- 6. 工作经历：日期变蓝 --- */
+  .exp-item {
+    padding: 24px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .exp-date {
+    font-size: 13px;
+    color: var(--accent-blue);
+    /* 蓝色高亮 */
+    font-weight: 600;
+  }
+
+  /* --- 7. 照片墙：隐藏滚动条 --- */
   .photo-grid {
     display: flex;
     overflow-x: auto;
@@ -669,6 +727,13 @@ footer {
     margin-left: -24px;
     width: calc(100% + 48px);
     padding: 0 24px 24px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .photo-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .photo-grid img {
@@ -676,18 +741,5 @@ footer {
     height: 280px;
     scroll-snap-align: center;
     object-fit: cover;
-    box-shadow: var(--shadow-md);
-  }
-
-  .exp-item {
-    padding: 24px;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .section-title {
-    font-size: 28px;
-    margin-top: 50px;
-    margin-bottom: 24px;
   }
 }
